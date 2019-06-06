@@ -1,0 +1,12 @@
+{
+  "name": "authdashboard",
+  "version": "1.0.0",
+  "description": "Authentication and frontend user dashboard for OLS users",
+  "main": "index.js",
+  "repository": "https://github.com/OneLightSystem/757.OLS.Project-Login-Authentication-users-dashboard",
+  "author": "Jeremy Diaz",
+  "license": "MIT",
+  "scripts": {
+    "client": "cd client && yarn start"
+  } 
+}
