@@ -40,16 +40,13 @@ export default class Register extends Component {
             <br />
             <Radio.Group onChange={this.onChange} value={this.state.value}>
               <Radio style={radioStyle} value={0}>
-                OLS Student (INTRO)
+                OLS Student (Intro + INITI)
               </Radio>
               <Radio style={radioStyle} value={1}>
-                OLSME (Public 3 months free, corporates/government fees)
+                OLSME (Public 30 days free , corporates or government fees)
               </Radio>
               <Radio style={radioStyle} value={2}>
-                OLS LM Investor equity holder
-              </Radio>
-              <Radio style={radioStyle} value={3}>
-                OLS Promoter %
+                OLS LM (Investor or buyer)
               </Radio>
             </Radio.Group>
           </div>
