@@ -218,28 +218,28 @@ class RegistrationForm extends React.Component {
           }
         >
           <div>
-            <Checkbox>10.Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
+            <Checkbox>(10)Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
             <br />
-          <Checkbox>10.Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
+          <Checkbox>(10)Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
             <br />
-            <Checkbox>5.Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
-          <Checkbox>5.Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
+            <Checkbox>(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
+          <Checkbox>(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
             <br />
-          <Checkbox>5.Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
+          <Checkbox>(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
             <br />
-          <Checkbox>5.Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
+          <Checkbox>(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
             <br />
           <Checkbox>Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
             <br />
-          <Checkbox>5.Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
+          <Checkbox>(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
             <br />
-          <Checkbox>1.Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
+          <Checkbox>(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
             <br />
           <Checkbox>I can offer something else</Checkbox>
             <br />
-          <Checkbox>1.Used valid crypto currencies to pay for OLS service fees</Checkbox>
+          <Checkbox>(1)Used valid crypto currencies to pay for OLS service fees</Checkbox>
             <br />
-          <Checkbox>10.I will create videos on the OLS experience</Checkbox>
+          <Checkbox>(10)I will create videos on the OLS experience</Checkbox>
             <br />
           <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
           </div>
