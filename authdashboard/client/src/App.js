@@ -10,6 +10,7 @@ import OLSMERegister from './components/auth/OLSMERegister';
 import OLSLMRegister from './components/auth/OLSLMRegister';
 import OLSPRegister from './components/auth/OLSPRegister';
 import Home from './components/dashboard/Home';
+import Privacy from './components/privacy/Privacy';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/olslmregister" component={OLSLMRegister} />
         <Route exact path="/olspregister" component={OLSPRegister} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/privacydisclosure" component={Privacy} />
       </div>
     </Router>
   );
