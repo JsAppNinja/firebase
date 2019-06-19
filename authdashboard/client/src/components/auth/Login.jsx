@@ -9,7 +9,7 @@ export default class Login extends Component {
     const WrappedLogin = Form.create({ name: 'login' })(BaseLogin);
 
     return (
-      <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-350px", "marginLeft": "-225px"}}>
+      <div style={{position: "absolute", top: "10%" ,left: "50%", "marginabsolute": "-350px", "marginLeft": "-225px"}}>
         <WrappedLogin /> 
       </div>
     );

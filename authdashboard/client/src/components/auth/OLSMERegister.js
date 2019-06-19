@@ -211,11 +211,7 @@ class RegistrationForm extends React.Component {
                   New User
                 </Radio>
                 <Radio style={radioStyle} value={3}>
-                  PAST Initiated
-                </Radio>
-                <Radio style={radioStyle} value={5}>
-                  other (describe) 
-                  {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                  PAST Initiated OLS student
                 </Radio>
               </Radio.Group>
             )
@@ -294,9 +290,6 @@ class RegistrationForm extends React.Component {
           })(
             <Checkbox>
               All the information submitted in this form is true and correct
-              <Tooltip title="The ols service fees based on assessment current provided Applicant up to date data (valid 9days) E-invitation Scheduling OLS INTRO. (included ols service fees* 50/50 pre-payment)">
-                <Icon type="question-circle-o" />
-              </Tooltip>
             </Checkbox>,
           )}
 </Form.Item>

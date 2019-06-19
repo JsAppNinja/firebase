@@ -200,7 +200,7 @@ class RegistrationForm extends React.Component {
           label={
             <span>
               How did you find out about OLS&nbsp;
-              <Tooltip title="OLS promoter - ref. ?">
+              <Tooltip title="OLS promoter - refferal ?">
                 <Icon type="question-circle-o" />
               </Tooltip>
             </span>
@@ -213,24 +213,62 @@ class RegistrationForm extends React.Component {
         <Form.Item
           label={
             <span>
-              How many promotions have you completed in the last 90 days?&nbsp;
+              select OLS user  &nbsp;
+              <Tooltip title=" free account ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
             </span>
           }
         >
-          {getFieldDecorator('promotions', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
+          {getFieldDecorator('radio-experience', {
+            rules: [{ required: true, validator: this.radioValidator, whitespace: true }]
+            })(
+              <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                <Radio style={radioStyle} value={1}>
+                  OLS promoter 
+                  <Tooltip title=" (promting OLS services for commission) ">
+                <Icon type="question-circle-o" />
+              </Tooltip> 
+                </Radio>
+                <Radio style={radioStyle} value={3}>
+                   using OLS services
+                  <Tooltip title=" (ordering OLS official for pulling Light into my Location, ordering OLSM performance in my location) ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+                  {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                </Radio>
+              </Radio.Group>
+            )
+          }
         </Form.Item>
-        <Form.Item
+        <Form.Item  
           label={
             <span>
-              How many leads have you generated for OLS?&nbsp;
+             Official OLS Promotion attribution &nbsp;
             </span>
           }
         >
-          {getFieldDecorator('leads', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
+          <div>
+            <br />
+            <Checkbox>(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
+          <Checkbox>(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
+            <br />
+          <Checkbox>(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
+            <br />
+          <Checkbox>(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
+            <br />
+          <Checkbox>(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
+          <br /> 
+          <Checkbox>(5) Followed us on <a href="https://www.instagram.com/onelightsystem_ols/">Instagram</a> page</Checkbox>
+            <br />
+          <Checkbox>(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
+            <br />
+          <Checkbox>I can offer something else</Checkbox>
+            <br />
+          <Checkbox>(10)I will create video on the OLS experience</Checkbox>
+            <br />
+          <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
+          </div>
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
