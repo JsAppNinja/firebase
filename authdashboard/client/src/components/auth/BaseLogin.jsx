@@ -20,7 +20,7 @@ export default class BaseLogin extends Component {
       <Card>
         <Form onSubmit={this.handleSubmit} className="login-form">
           <div style={{"padding-bottom": "10px", "text-align": "center"}}>
-            <Title level={3}> 786.OLS onelightsystem Meditation®</Title>
+            <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">786.OLS onelightsystem Meditation® </a> </Title>
           </div>
           <Form.Item>
             {getFieldDecorator('username', {

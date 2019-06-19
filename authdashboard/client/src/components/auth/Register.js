@@ -49,7 +49,7 @@ export default class Register extends Component {
                 OLSLM (Investor or buyer)
               </Radio>
                 <Radio style={radioStyle} value={3}>
-                OLS promoter (other sevices)
+                OLS promoter (free account and other OLS sevices)
               </Radio>
             </Radio.Group>
           </div>

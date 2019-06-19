@@ -205,13 +205,23 @@ class RegistrationForm extends React.Component {
                 <Radio style={radioStyle} value={3}>
                   PAST Initiated
                 </Radio>
-                <Radio style={radioStyle} value={5}>
-                  other (describe)
-                  {this.state.value === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
-                </Radio>
               </Radio.Group>
             )
           }
+        </Form.Item>
+        <Form.Item
+          label={
+            <span>
+              How did you find out about OLS&nbsp;
+              <Tooltip title="OLS promoter - refferal ?">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          }
+        >
+          {getFieldDecorator('Reference', {
+            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
+          })(<Input />)}
         </Form.Item>
         <Form.Item
           label={
@@ -237,20 +247,7 @@ class RegistrationForm extends React.Component {
             )
           }
         </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              How did you find out about OLS&nbsp;
-              <Tooltip title="OLS promoter - refferal ?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          }
-        >
-          {getFieldDecorator('Reference', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
+        
         <Form.Item
           label={
             <span>

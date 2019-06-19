@@ -213,36 +213,44 @@ class RegistrationForm extends React.Component {
         <Form.Item
           label={
             <span>
-               Evaluation credits?&nbsp;
+              select OLSLM options &nbsp;
+              <Tooltip title=" OLSLM LIGHT MINUTES OLS equity ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
             </span>
           }
         >
-          <div>
-            <Checkbox>(10)Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
-            <br />
-          <Checkbox>(10)Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
-            <br />
-            <Checkbox>(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
-          <Checkbox>(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
-            <br />
-          <Checkbox>(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
-            <br />
-          <Checkbox>(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
-            <br />
-          <Checkbox>Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
-            <br />
-          <Checkbox>(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
-            <br />
-          <Checkbox>(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
-            <br />
-          <Checkbox>I can offer something else</Checkbox>
-            <br />
-          <Checkbox>(1)Used valid crypto currencies to pay for OLS service fees</Checkbox>
-            <br />
-          <Checkbox>(10)I will create videos on the OLS experience</Checkbox>
-            <br />
-          <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
-          </div>
+          {getFieldDecorator('radio-experience', {
+            rules: [{ required: true, validator: this.radioValidator, whitespace: true }]
+            })(
+              <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                <Radio style={radioStyle} value={1}>
+                  OLSLM Investor
+                  <Tooltip title=" (90, 180, 360 days Investing benefits) ">
+                <Icon type="question-circle-o" />
+              </Tooltip> 
+                </Radio>
+                <Radio style={radioStyle} value={3}>
+                  OLSLM buyer 
+                  <Tooltip title=" (min. 1LM category 9 or 10LM category 3) ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+                  {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                </Radio>
+              </Radio.Group>
+            )
+          }
+        </Form.Item>
+        <Form.Item
+          label={
+            <span>
+              Your LOCATION (country, city/town)&nbsp;
+            </span>
+          }
+        >
+          {getFieldDecorator('location', {
+            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
+          })(<Input />)}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
@@ -259,6 +267,9 @@ class RegistrationForm extends React.Component {
           })(
             <Checkbox>
               All the information submitted in this form is true and correct
+              <Tooltip title=" after registration you will receive confirmation your account created ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
             </Checkbox>,
           )}
         </Form.Item>
