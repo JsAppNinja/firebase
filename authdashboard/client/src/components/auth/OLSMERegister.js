@@ -140,7 +140,7 @@ class RegistrationForm extends React.Component {
 
     return (
       <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-350px", "marginLeft": "-650px"}}>
-      <Card style={{ width: 1300, marginBottom: 60 }}>
+      <Card style={{ width: 1000, marginBottom: 60 }}>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="E-mail">
           {getFieldDecorator('email', {
@@ -210,48 +210,67 @@ class RegistrationForm extends React.Component {
                 <Radio style={radioStyle} value={1}>
                   New User
                 </Radio>
-                <Radio style={radioStyle} value={2}>
-                  Received 1 ols introduction before
-                </Radio>
                 <Radio style={radioStyle} value={3}>
-                  PAST INITI.ATED
-                </Radio>
-                <Radio style={radioStyle} value={4}>
-                  Have received a personal invitation
+                  PAST Initiated
                 </Radio>
                 <Radio style={radioStyle} value={5}>
-                  Yes (describe in the next part2 ols promoter -/+% referral )
-                </Radio>
-                <Radio style={radioStyle} value={6}>
-                  Other...
+                  other (describe) 
                   {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
                 </Radio>
               </Radio.Group>
             )
           }
         </Form.Item>
+
+<Form.Item
+          label={
+            <span>
+              select OLSME usage account &nbsp;
+              <Tooltip title=" to evalueta OLSME services fees ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </span>
+          }
+        >
+          {getFieldDecorator('radio-experience', {
+            rules: [{ required: true, validator: this.radioValidator, whitespace: true }]
+            })(
+              <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                <Radio style={radioStyle} value={1}>
+                  Induvidual
+                  <Tooltip title=" (30 days free, after fees based on usage and GDP ) ">
+                <Icon type="question-circle-o" />
+              </Tooltip> 
+                </Radio>
+                <Radio style={radioStyle} value={3}>
+                  Corporation 
+                  <Tooltip title=" (Fees based on size and volume) ">
+                <Icon type="question-circle-o" />
+              </Tooltip> 
+                </Radio>
+                <Radio style={radioStyle} value={5}>
+                  Govermental entity 
+                  <Tooltip title="  (Fees based on state and contry) ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+                  {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                </Radio>
+              </Radio.Group>
+            )
+          }
+        </Form.Item>
+
         <Form.Item
           label={
             <span>
               How did you find out about OLS&nbsp;
-              <Tooltip title="OLS promoter - ref. ?">
+              <Tooltip title="OLS promoter - refferal ?">
                 <Icon type="question-circle-o" />
               </Tooltip>
             </span>
           }
         >
           {getFieldDecorator('Reference', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Your company name&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('company', {
             rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
@@ -269,57 +288,45 @@ class RegistrationForm extends React.Component {
             rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Describe the reason why you are requesting OLSME training&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('reason', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Meditation Experience&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('experience', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Any Health Issues?&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('health', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              How soon can you start?&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('start', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
+        <Form.Item {...tailFormItemLayout}>
+          {getFieldDecorator('agreement2', {
+            valuePropName: 'checked',
           })(
-              <DatePicker onChange={this.setDate} />
-            )
-          }
-        </Form.Item>
+            <Checkbox>
+              All the information submitted in this form is true and correct
+              <Tooltip title="The ols service fees based on assessment current provided Applicant up to date data (valid 9days) E-invitation Scheduling OLS INTRO. (included ols service fees* 50/50 pre-payment)">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </Checkbox>,
+          )}
+</Form.Item>
+<Form.Item {...tailFormItemLayout}>
+          {getFieldDecorator('agreement', {
+            valuePropName: 'checked',
+          })(
+            <Checkbox>
+              I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
+            </Checkbox>,
+          )}
+        </Form.Item>     
+        <Form.Item {...tailFormItemLayout}>
+          <Link to="/home">
+          <Button type="primary" htmlType="submit">
+            OLSME for Corporates or Govermental entity Apply  
+          </Button>
+          </Link>
+        </Form.Item> 
+        <Form.Item {...tailFormItemLayout}>
+          <Link to="/home">
+          <Button type="primary" htmlType="submit">
+            OLSME user Signup 
+          </Button>
+          </Link>
+        </Form.Item> 
         <Form.Item
           label={
             <span>
-              Supportive (perks) evaluation credits?&nbsp;
+             evaluation credits?&nbsp;
             </span>
           }
         >
@@ -348,31 +355,6 @@ class RegistrationForm extends React.Component {
             <br />
           <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
           </div>
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>
-              I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
-            </Checkbox>,
-          )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement2', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>
-              All the information submitted in this form is true and correct
-            </Checkbox>,
-          )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Link to="/home">
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
-          </Link>
         </Form.Item>
       </Form>
       </Card>

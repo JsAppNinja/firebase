@@ -129,7 +129,7 @@ class RegistrationForm extends React.Component {
 
     return (
       <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-350px", "marginLeft": "-650px"}}>
-      <Card style={{ width: 1300, marginBottom: 60 }}>
+      <Card style={{ width: 1000, marginBottom: 60. }}>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="E-mail">
           {getFieldDecorator('email', {
@@ -197,22 +197,16 @@ class RegistrationForm extends React.Component {
             })(
               <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                 <Radio style={radioStyle} value={1}>
-                  New User
+                  New 
                 </Radio>
                 <Radio style={radioStyle} value={2}>
                   Received 1 ols introduction before
                 </Radio>
                 <Radio style={radioStyle} value={3}>
-                  PAST INITI.ATED
-                </Radio>
-                <Radio style={radioStyle} value={4}>
-                  Have received a personal invitation
+                  PAST Initiated
                 </Radio>
                 <Radio style={radioStyle} value={5}>
-                  Yes (describe in the next part2 ols promoter -/+% referral )
-                </Radio>
-                <Radio style={radioStyle} value={6}>
-                  Other...
+                  other (describe)
                   {this.state.value === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
                 </Radio>
               </Radio.Group>
@@ -222,22 +216,22 @@ class RegistrationForm extends React.Component {
         <Form.Item
           label={
             <span>
-              OLS Teacher/Instructor&nbsp;
-              <Tooltip title="Each has it is own exchange measurement evaluation protocols to determinate proper ols* service fee energy exchange.">
+              OLS eae | inuo &nbsp;
+              <Tooltip title=" OLS eae (teacher) OLS inuo (instructor) Each has it is own exchange measurement evaluation protocols to determinate proper OLS service fees energy exchange.">
                 <Icon type="question-circle-o" />
               </Tooltip>
             </span>
           }
         >
-          {getFieldDecorator('instructor', {
-            rules: [{ required: true, message: 'Please select an instructor!', whitespace: true }],
+          {getFieldDecorator('teacher', {
+            rules: [{ required: true, message: 'Please select OLS official!', whitespace: true }],
             })(
               <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                 <Radio style={radioStyle} value={1}>
-                  Nazar Asvitlo OLS aste. eae master teacher Nazar CA USA, UA Pankiv
+                  OLS aste. eae | Nazar Asvitlo  CA USA
                 </Radio>
                 <Radio style={radioStyle} value={2}>
-                  Rei-Wen Ho (OLS* inu. inustructo) 教员 CA USA
+                  OLS inuo | Rei-Wen Ho  教员 CA USA
                 </Radio>
               </Radio.Group>
             )
@@ -247,7 +241,7 @@ class RegistrationForm extends React.Component {
           label={
             <span>
               How did you find out about OLS&nbsp;
-              <Tooltip title="OLS promoter - ref. ?">
+              <Tooltip title="OLS promoter - refferal ?">
                 <Icon type="question-circle-o" />
               </Tooltip>
             </span>
@@ -335,40 +329,19 @@ class RegistrationForm extends React.Component {
             )
           }
         </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Supportive (perks) evaluation credits?&nbsp;
-            </span>
-          }
-        >
-          <div>
-            <Checkbox>Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
-            <br />
-          <Checkbox>Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
-            <br />
-          <Checkbox>Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
-            <br />
-          <Checkbox>Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
-            <br />
-          <Checkbox>Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
-            <br />
-          <Checkbox>Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
-            <br />
-          <Checkbox>Liked our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
-            <br />
-          <Checkbox>Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
-            <br />
-          <Checkbox>I can offer something else</Checkbox>
-            <br />
-          <Checkbox>Used valid crypto currencies to pay for OLS service fees</Checkbox>
-            <br />
-          <Checkbox>I will create videos on the OLS experience</Checkbox>
-            <br />
-          <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
-          </div>
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
+<Form.Item {...tailFormItemLayout}>
+          {getFieldDecorator('agreement2', {
+            valuePropName: 'checked',
+          })(
+            <Checkbox>
+              All the information submitted in this form is true and correct
+              <Tooltip title="The OLS service fees based on assessment current provided Applicant up to date data (valid 9days after to re-evaluate fees will increse 10%) Expect official @mail (intro@ols-med.net) you will receive Assessed OLS servcie Fees to include 50% pre-payment to Scheduling OLS INTRO. ">
+                <Icon type="question-circle-o" />
+              </Tooltip>
+            </Checkbox>,
+          )}
+</Form.Item>
+<Form.Item {...tailFormItemLayout}>
           {getFieldDecorator('agreement', {
             valuePropName: 'checked',
           })(
@@ -376,23 +349,49 @@ class RegistrationForm extends React.Component {
               I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
             </Checkbox>,
           )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement2', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>
-              All the information submitted in this form is true and correct
-            </Checkbox>,
-          )}
-        </Form.Item>
+        </Form.Item>  
         <Form.Item {...tailFormItemLayout}>
           <Link to="/home">
           <Button type="primary" htmlType="submit">
-            Register
+            Register Applicant for a free assesment to receive OLS service intro and Initi
           </Button>
           </Link>
+        </Form.Item>    
+        <Form.Item  
+          label={
+            <span>
+              Evaluation credits?&nbsp;
+            </span>
+          }
+        >
+          <div>
+          <Checkbox>(10)Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
+            <br />
+          <Checkbox>(10)Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
+            <br />
+            <Checkbox>(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
+          <Checkbox>(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
+            <br />
+          <Checkbox>(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
+            <br />
+          <Checkbox>(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
+            <br />
+          <Checkbox>Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
+            <br />
+          <Checkbox>(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
+            <br />
+          <Checkbox>(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
+            <br />
+          <Checkbox>I can offer something else</Checkbox>
+            <br />
+          <Checkbox>(1) will apply valid crypto currencies to pay for OLS service fees</Checkbox>
+            <br />
+          <Checkbox>(10)I will create video on the OLS experience</Checkbox>
+            <br />
+          <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
+          </div>
         </Form.Item>
+        
       </Form>
       </Card>
       </div>

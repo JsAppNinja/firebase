@@ -9,6 +9,8 @@
   "scripts": {
     "client": "cd client && yarn start"
   },
-  "dependencies": {},
+  "dependencies": {
+    "pascalcase": "^0.1.1"
+  },
   "devDependencies": {}
 }

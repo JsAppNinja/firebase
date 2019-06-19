@@ -31,7 +31,7 @@ export default class Register extends Component {
   render() {
     console.log(this.state);
     return (
-      <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-350px", "marginLeft": "-225px"}}>
+      <div style={{position: "absolute", top: "10%" ,left: "50%", "margincenter": "-350px", "marginLeft": "-225px"}}>
         <Card style={{ display: "inline-flex" }}>
           <div>
             <div style={{"textAlign": "center"}}>
@@ -40,13 +40,16 @@ export default class Register extends Component {
             <br />
             <Radio.Group onChange={this.onChange} value={this.state.value}>
               <Radio style={radioStyle} value={0}>
-                OLS Student (Intro + INITI)
+                OLS Student (Intro and Initi assesment application)
               </Radio>
               <Radio style={radioStyle} value={1}>
-                OLSME (Public 30 days free , corporates or government fees)
+                OLSME user (Public 30 days free, corporates or government fees)
               </Radio>
               <Radio style={radioStyle} value={2}>
-                OLS LM (Investor or buyer)
+                OLSLM (Investor or buyer)
+              </Radio>
+                <Radio style={radioStyle} value={3}>
+                OLS promoter (other sevices)
               </Radio>
             </Radio.Group>
           </div>

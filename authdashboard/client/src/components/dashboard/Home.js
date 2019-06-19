@@ -32,7 +32,7 @@ export default class Home extends Component {
             <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>OLS updates 785
 </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>onelightsystem OLS ©2017-2019 </Footer>
+          <Footer style={{ textAlign: 'center' }}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">onelightsystem OLS ©2017-2019 </a> </Footer>
         </Layout>
       </Layout>
     );

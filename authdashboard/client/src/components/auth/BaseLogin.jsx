@@ -19,8 +19,8 @@ export default class BaseLogin extends Component {
     return (
       <Card>
         <Form onSubmit={this.handleSubmit} className="login-form">
-          <div style={{"padding-bottom": "50px", "text-align": "center"}}>
-            <Title level={3}> 784.OLS onelightsystem Meditation®</Title>
+          <div style={{"padding-bottom": "10px", "text-align": "center"}}>
+            <Title level={3}> 786.OLS onelightsystem Meditation®</Title>
           </div>
           <Form.Item>
             {getFieldDecorator('username', {
