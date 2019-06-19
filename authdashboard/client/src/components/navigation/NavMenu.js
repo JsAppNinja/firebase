@@ -20,16 +20,16 @@ export default class NavMenu extends Component {
         <div className="logo" />
         <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
           <Menu.Item key="1">
-            <Icon type="user" />
-            <span>User</span>
+          <Icon type="file" />
+            <span>OLS stats</span>
           </Menu.Item>
           <Menu.Item key="2">
-            <Icon type="file" />
-            <span>File</span>
+            <Icon type="user" />
+            <span>Profile</span>
           </Menu.Item>
           <Menu.Item key="3">
             <Icon type="setting" />
-            <span>Config</span>
+            <span>Support</span>
           </Menu.Item>
         </Menu>
       </Sider>
