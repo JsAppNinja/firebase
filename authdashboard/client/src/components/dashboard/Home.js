@@ -24,12 +24,15 @@ export default class Home extends Component {
           <Header style={{ background: '#fff', padding: 0 }} />
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Test</Breadcrumb.Item>
+              <Breadcrumb.Item>OLS student</Breadcrumb.Item>
+              <Breadcrumb.Item>OLS updates</Breadcrumb.Item>
+              <Breadcrumb.Item>Subbmit OLS LM OLSM OLSME</Breadcrumb.Item>
+              <Breadcrumb.Item>Request OLS initi</Breadcrumb.Item>
             </Breadcrumb>
-            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>OLS Test</div>
+            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>OLS updates 785
+</div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>OLS ©2018</Footer>
+          <Footer style={{ textAlign: 'center' }}>onelightsystem OLS ©2017-2019 </Footer>
         </Layout>
       </Layout>
     );
