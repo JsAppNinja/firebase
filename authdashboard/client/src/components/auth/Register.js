@@ -31,7 +31,7 @@ export default class Register extends Component {
   render() {
     console.log(this.state);
     return (
-      <div style={{position: "absolute", top: "10%" ,left: "50%", "margincenter": "-350px", "marginLeft": "-225px"}}>
+      <div style={{position: "absolute", top: "20%" ,left: "50%", "margincenter": "-350px", "marginLeft": "-255px"}}>
         <Card style={{ display: "inline-flex" }}>
           <div>
             <div style={{"textAlign": "center"}}>

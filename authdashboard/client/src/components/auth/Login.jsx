@@ -12,7 +12,7 @@ export default class Login extends Component {
 
     return (
       <div>
-        <div style={{position: "absolute", top: "10%" ,left: "50%", "marginabsolute": "-350px", "marginLeft": "-225px"}}>
+        <div style={{position: "absolute", top: "10%" ,left: "50%", "marginabsolute": "-300px", "marginLeft": "-270px"}}>
           <WrappedLogin /> 
         </div>
         
