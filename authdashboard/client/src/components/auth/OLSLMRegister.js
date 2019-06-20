@@ -139,8 +139,8 @@ class RegistrationForm extends React.Component {
     const test = this;
 
     return (
-      <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-350px", "marginLeft": "-650px"}}>
-      <Card style={{ width: 1300, marginBottom: 60 }}>
+      <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-300px", "marginLeft": "-600px"}}>
+      <Card style={{ width: 1100, marginBottom: 60 }}>
       <Form {...formItemLayout} onSubmit={this.handleSubmit}>
         <Form.Item label="E-mail">
           {getFieldDecorator('email', {
