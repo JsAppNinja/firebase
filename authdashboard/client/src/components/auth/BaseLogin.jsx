@@ -17,47 +17,49 @@ export default class BaseLogin extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <Card>
-        <Form onSubmit={this.handleSubmit} className="login-form">
-          <div style={{"padding-bottom": "10px", "text-align": "center"}}>
-            <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">786.OLS onelightsystem Meditation® </a> </Title>
-          </div>
-          <Form.Item>
-            {getFieldDecorator('username', {
-              rules: [{ required: true, message: 'Please input your username!' }],
-            })(
-              <Input
-                prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                placeholder="Username"
-              />,
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator('password', {
-              rules: [{ required: true, message: 'Please input your Password!' }],
-            })(
-              <Input
-                prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                type="password"
-                placeholder="Password"
-              />,
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator('remember', {
-              valuePropName: 'checked',
-              initialValue: true,
-            })(<Checkbox>Remember me</Checkbox>)}
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
-            <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
-            </Button>
-            Or <a href="/register">register now!</a>
-          </Form.Item>
-        </Form>
-      </Card>
+      <div>
+        <Card>
+          <Form onSubmit={this.handleSubmit} className="login-form">
+            <div style={{"padding-bottom": "10px", "text-align": "center"}}>
+              <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">786.OLS onelightsystem Meditation® </a> </Title>
+            </div>
+            <Form.Item>
+              {getFieldDecorator('username', {
+                rules: [{ required: true, message: 'Please input your username!' }],
+              })(
+                <Input
+                  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  placeholder="Username"
+                />,
+              )}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: 'Please input your Password!' }],
+              })(
+                <Input
+                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                  type="password"
+                  placeholder="Password"
+                />,
+              )}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator('remember', {
+                valuePropName: 'checked',
+                initialValue: true,
+              })(<Checkbox>Remember me</Checkbox>)}
+              <a className="login-form-forgot" href="">
+                Forgot password
+              </a>
+              <Button type="primary" htmlType="submit" className="login-form-button">
+                Log in
+              </Button>
+              Or <a href="/register">register now!</a>
+            </Form.Item>
+          </Form>
+        </Card>
+      </div>
     );
   }
 }

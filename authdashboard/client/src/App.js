@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Layout } from "antd";
 import 'antd/dist/antd.css';
 
 // Custom Components
@@ -12,21 +13,26 @@ import OLSPRegister from './components/auth/OLSPRegister';
 import Home from './components/dashboard/Home';
 import Privacy from './components/privacy/Privacy';
 
+const { Footer } = Layout;
+
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Route exact path="/" component={Login} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/olssregister" component={OLSSRegister} />
-        <Route exact path="/olsmeregister" component={OLSMERegister} />
-        <Route exact path="/olslmregister" component={OLSLMRegister} />
-        <Route exact path="/olspregister" component={OLSPRegister} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/privacydisclosure" component={Privacy} />
-      </div>
-    </Router>
+    <div>
+      <Router>
+        <div className="App">
+          <Route exact path="/" component={Login} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/olssregister" component={OLSSRegister} />
+          <Route exact path="/olsmeregister" component={OLSMERegister} />
+          <Route exact path="/olslmregister" component={OLSLMRegister} />
+          <Route exact path="/olspregister" component={OLSPRegister} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/privacydisclosure" component={Privacy} />
+        </div>
+      </Router>
+       
+    </div>
   );
 }
 
