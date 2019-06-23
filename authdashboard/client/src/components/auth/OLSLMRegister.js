@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Link } from "react-router-dom"; 
+import { FirebaseContext } from '../Firebase';
 import {
+  Modal,
   Form,
   Input,
   Tooltip,
@@ -30,6 +32,8 @@ const radioStyle = {
 };
 
 class RegistrationForm extends React.Component {
+  static contextType = FirebaseContext;
+
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -41,6 +45,36 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+
+        // Prep Data
+        var data = {
+          name: values.name,
+          reference: values.reference,
+          loc: values.location,
+          olslmaccounttype: values.olslmaccounttype
+        }
+ 
+        // Create user account
+        // Ensure user agreed with ToS
+        if(values.agreement1 && values.agreement2) {
+          this.firebase.createUser(values.email, values.password)
+          .then(() => {
+             // Send email verification and add user data to database
+             return Promise.all([
+               this.firebase.sendEmailVerification(),
+               this.firebase.createUserFireStore(data)
+             ]);
+           })
+          .then(() => {
+            Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+          })
+          .catch(error => {
+            Modal.error({ title: "Unable to Create Account", content: error.message });
+            console.log(error); 
+          });
+        }
+      } else {
+        console.log('Account creation error');
       }
     });
   };
@@ -89,13 +123,9 @@ class RegistrationForm extends React.Component {
     this.props.form.setFieldsValue({radio:e.target.value})
   };
 
-  radioValidator = (rule, value, callback) => {
-    if (!value) {
-      callback('Please input your experience!');
-    } else {
-      callback();
-    }
-  };
+  componentDidMount() {
+    this.firebase = this.context;
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -192,7 +222,7 @@ class RegistrationForm extends React.Component {
             </span>
           }
         >
-          {getFieldDecorator('Name', {
+          {getFieldDecorator('name', {
             rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
@@ -206,7 +236,7 @@ class RegistrationForm extends React.Component {
             </span>
           }
         >
-          {getFieldDecorator('Reference', {
+          {getFieldDecorator('reference', {
             rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
@@ -220,17 +250,17 @@ class RegistrationForm extends React.Component {
             </span>
           }
         >
-          {getFieldDecorator('radio-experience', {
-            rules: [{ required: true, validator: this.radioValidator, whitespace: true }]
+          {getFieldDecorator('olslmaccounttype', {
+            rules: [{ required: true, whitespace: true }]
             })(
               <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
-                <Radio style={radioStyle} value={1}>
+                <Radio style={radioStyle} value="OLSLM Investor">
                   OLSLM Investor
                   <Tooltip title=" (90, 180, 360 days Investing benefits) ">
                 <Icon type="question-circle-o" />
               </Tooltip> 
                 </Radio>
-                <Radio style={radioStyle} value={3}>
+                <Radio style={radioStyle} value="OLSLM buyer">
                   OLSLM buyer 
                   <Tooltip title=" (min. 1LM category 9 or 10LM category 3) ">
                 <Icon type="question-circle-o" />
@@ -252,18 +282,30 @@ class RegistrationForm extends React.Component {
             rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
+        <Form.Item
+              label={
+                <span>
+                  Agreement 1&nbsp;
+                </span>
+              }
+        >
+          {getFieldDecorator('agreement1', {
+            valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
           })(
             <Checkbox>
               I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
             </Checkbox>,
           )}
         </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
+        <Form.Item
+          label={
+            <span>
+              Agreement 2&nbsp;
+            </span>
+          }
+        >
           {getFieldDecorator('agreement2', {
-            valuePropName: 'checked',
+            valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
           })(
             <Checkbox>
               All the information submitted in this form is true and correct
@@ -274,11 +316,9 @@ class RegistrationForm extends React.Component {
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Link to="/home">
           <Button type="primary" htmlType="submit">
             Register
           </Button>
-          </Link>
         </Form.Item>
       </Form>
       </Card>

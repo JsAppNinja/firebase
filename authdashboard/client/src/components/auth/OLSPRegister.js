@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Link } from "react-router-dom"; 
+import { FirebaseContext } from '../Firebase';
 import {
+  Modal,
   Form,
   Input,
   Tooltip,
@@ -30,6 +32,8 @@ const radioStyle = {
 };
 
 class RegistrationForm extends React.Component {
+  static contextType = FirebaseContext;
+
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -41,6 +45,36 @@ class RegistrationForm extends React.Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         console.log('Received values of form: ', values);
+
+        // Prep Data
+        var data = {
+          name: values.name,
+          reference: values.reference,
+          credits: values.credits,
+          olspaccounttype: values.olspaccounttype
+        }
+ 
+        // Create user account
+        // Ensure user agreed with ToS
+        if(values.agreement1 && values.agreement2) {
+          this.firebase.createUser(values.email, values.password)
+          .then(() => {
+             // Send email verification and add user data to database
+             return Promise.all([
+               this.firebase.sendEmailVerification(),
+               this.firebase.createUserFireStore(data)
+             ]);
+           })
+          .then(() => {
+            Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+          })
+          .catch(error => {
+            Modal.error({ title: "Unable to Create Account", content: error.message });
+            console.log(error); 
+          });
+        }
+      } else {
+        console.log('Account creation error');
       }
     });
   };
@@ -89,13 +123,9 @@ class RegistrationForm extends React.Component {
     this.props.form.setFieldsValue({radio:e.target.value})
   };
 
-  radioValidator = (rule, value, callback) => {
-    if (!value) {
-      callback('Please input your experience!');
-    } else {
-      callback();
-    }
-  };
+  componentDidMount() {
+    this.firebase = this.context;
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;
@@ -192,7 +222,7 @@ class RegistrationForm extends React.Component {
             </span>
           }
         >
-          {getFieldDecorator('Name', {
+          {getFieldDecorator('name', {
             rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
@@ -206,7 +236,7 @@ class RegistrationForm extends React.Component {
             </span>
           }
         >
-          {getFieldDecorator('Reference', {
+          {getFieldDecorator('reference', {
             rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
           })(<Input />)}
         </Form.Item>
@@ -220,18 +250,18 @@ class RegistrationForm extends React.Component {
             </span>
           }
         >
-          {getFieldDecorator('radio-experience', {
-            rules: [{ required: true, validator: this.radioValidator, whitespace: true }]
+          {getFieldDecorator('olspaccounttype', {
+            rules: [{ required: true, message: "Please choose an option!", whitespace: true }]
             })(
               <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
-                <Radio style={radioStyle} value={1}>
+                <Radio style={radioStyle} value="OLS promoter">
                   OLS promoter 
                   <Tooltip title=" (promting OLS services for commission) ">
                 <Icon type="question-circle-o" />
               </Tooltip> 
                 </Radio>
-                <Radio style={radioStyle} value={3}>
-                   using OLS services
+                <Radio style={radioStyle} value="using OLS services">
+                   Using OLS services
                   <Tooltip title=" (ordering OLS official for pulling Light into my Location, ordering OLSM performance in my location) ">
                 <Icon type="question-circle-o" />
               </Tooltip>
@@ -241,59 +271,82 @@ class RegistrationForm extends React.Component {
             )
           }
         </Form.Item>
-        <Form.Item  
+        <Form.Item 
           label={
             <span>
-             Official OLS Promotion attribution &nbsp;
+              Agreement 1&nbsp;
             </span>
           }
         >
-          <div>
-            <br />
-            <Checkbox>(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
-          <Checkbox>(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
-            <br />
-          <Checkbox>(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
-            <br />
-          <Checkbox>(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
-            <br />
-          <Checkbox>(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
-          <br /> 
-          <Checkbox>(5) Followed us on <a href="https://www.instagram.com/onelightsystem_ols/">Instagram</a> page</Checkbox>
-            <br />
-          <Checkbox>(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
-            <br />
-          <Checkbox>I can offer something else</Checkbox>
-            <br />
-          <Checkbox>(10)I will create video on the OLS experience</Checkbox>
-            <br />
-          <Checkbox>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }}/>
-          </div>
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement', {
-            valuePropName: 'checked',
-          })(
-            <Checkbox>
-              I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
-            </Checkbox>,
-          )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          {getFieldDecorator('agreement2', {
-            valuePropName: 'checked',
+          {getFieldDecorator('agreement1', {
+            valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
           })(
             <Checkbox>
               All the information submitted in this form is true and correct
-            </Checkbox>,
+            </Checkbox>
+          )}
+        </Form.Item>
+        <Form.Item 
+          label={
+            <span>
+              Agreement 2&nbsp;
+            </span>
+          }
+        >
+          {getFieldDecorator('agreement2', {
+            valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
+          })(
+            <Checkbox>
+              I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
+            </Checkbox>
+          )}
+        </Form.Item>
+        <Form.Item label={
+            <span>
+              Evaluation credits?&nbsp;
+            </span>
+          }
+        >
+          {getFieldDecorator('credits', {
+            rules: [{ type: "array" }], initialValue: [""]}
+          )(
+            <Checkbox.Group
+              onChange={(values) => { console.log(values) }} 
+            >
+              <div>
+                <Checkbox value="10 Google Review">(10)Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
+                  <br />
+                <Checkbox value="10 Lessons.com">(10)Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
+                  <br />
+                <Checkbox value="5 Youtube">(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
+                  <br />
+                <Checkbox value="5 CrunchBase">(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
+                  <br />
+                <Checkbox value="5 LinkedIn">(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
+                  <br />
+                <Checkbox value="5 Owler">(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
+                  <br />
+                <Checkbox value="Udemy">Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
+                  <br />
+                <Checkbox value="5 Facebook">(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
+                  <br />
+                <Checkbox value="5 OLS Subscription">(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
+                  <br />
+                <Checkbox value="Offter something else">I can offer something else</Checkbox>
+                  <br />
+                <Checkbox value="Pay with crypto">(1) will apply valid crypto currencies to pay for OLS service fees</Checkbox>
+                  <br />
+                <Checkbox value="Create OLS Video">(10)I will create video on the OLS experience</Checkbox>
+                  <br />
+                <Checkbox checked={ true } value={ "Other " + this.state.checkboxOther }>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }} onChange={ this.handleCheckboxOther }/>
+              </div>
+            </Checkbox.Group>
           )}
         </Form.Item>
         <Form.Item {...tailFormItemLayout}>
-          <Link to="/home">
           <Button type="primary" htmlType="submit">
             Register
           </Button>
-          </Link>
         </Form.Item>
       </Form>
       </Card>
