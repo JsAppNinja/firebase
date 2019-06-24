@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { withRouter, BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import 'antd/dist/antd.css';
 
@@ -10,30 +10,60 @@ import OLSSRegister from './components/auth/OLSSRegister';
 import OLSMERegister from './components/auth/OLSMERegister';
 import OLSLMRegister from './components/auth/OLSLMRegister';
 import OLSPRegister from './components/auth/OLSPRegister';
+import PasswordReset from './components/auth/PasswordReset';
 import Home from './components/dashboard/Home';
 import Privacy from './components/privacy/Privacy';
+import Firebase, { FirebaseContext } from './components/Firebase';
+import ProtectedRoute from './components/navigation/ProtectedRoute';
 
 const { Footer } = Layout;
 
-function App() {
-  return (
-    <div>
-      <Router>
+//function App() {
+export class App extends Component {
+  constructor(props) {
+    super(props);
+    // Created firebase object as a singleton
+    this.firebase = new Firebase();
+
+    this.state = {
+      authenticated: false
+    }
+  }
+
+  componentDidMount() {
+    console.log(this.firebase);
+    var appThis= this;
+    // Set listener for user authentication status
+    this.firebase.auth.onAuthStateChanged(function(user) {
+      if(user) {
+        appThis.setState({ authenticated: true });
+        appThis.props.history.push("/home");
+      } else {
+        appThis.setState({ authenticated: false });
+      }
+      console.log("authed");
+    })
+  }
+
+  render() {
+    console.log(this.state);
+    //this.firebase.signOutUser();
+    return (
+      <FirebaseContext.Provider value={this.firebase}>
         <div className="App">
           <Route exact path="/" component={Login} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/register" component={Register} />
-          <Route exact path="/olssregister" component={OLSSRegister} />
-          <Route exact path="/olsmeregister" component={OLSMERegister} />
-          <Route exact path="/olslmregister" component={OLSLMRegister} />
-          <Route exact path="/olspregister" component={OLSPRegister} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/privacydisclosure" component={Privacy} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route path="/olssregister" component={OLSSRegister} />
+          <Route path="/olsmeregister" component={OLSMERegister} />
+          <Route path="/olslmregister" component={OLSLMRegister} />
+          <Route path="/olspregister" component={OLSPRegister} />
+          <Route path="/passwordreset" component={PasswordReset} />
+          <ProtectedRoute path="/home" authenticated={this.state.authenticated} component={Home} />
+          <Route path="/privacydisclosure" component={Privacy} />
         </div>
-      </Router>
-       
-    </div>
-  );
+      </FirebaseContext.Provider>
+    );
+  }
 }
-
-export default App;
+export default withRouter(App);
