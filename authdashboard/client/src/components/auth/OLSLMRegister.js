@@ -19,9 +19,11 @@ import {
   Card,
   Radio,
   DatePicker,
-  TimePicker
+  TimePicker,
+  Typography
 } from 'antd';
 
+const { Title } = Typography;
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
 
@@ -169,159 +171,165 @@ class RegistrationForm extends React.Component {
     const test = this;
 
     return (
-      <div style={{position: "absolute", top: "60%" ,left: "65%", "marginTop": "-350px", "marginLeft": "-650px"}}>
-      <Card style={{ width: 850, marginBottom: 60. }}>
-      <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-        <Form.Item label="E-mail">
-          {getFieldDecorator('email', {
-            rules: [
-              {
-                type: 'email',
-                message: 'The input is not valid E-mail!',
-              },
-              {
-                required: true,
-                message: 'Please input your E-mail!',
-              },
-            ],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item label="Password" hasFeedback>
-          {getFieldDecorator('password', {
-            rules: [
-              {
-                required: true,
-                message: 'Please input your password!',
-              },
-              {
-                validator: this.validateToNextPassword,
-              },
-            ],
-          })(<Input.Password />)}
-        </Form.Item>
-        <Form.Item label="Confirm Password" hasFeedback>
-          {getFieldDecorator('confirm', {
-            rules: [
-              {
-                required: true,
-                message: 'Please confirm your password!',
-              },
-              {
-                validator: this.compareToFirstPassword,
-              },
-            ],
-          })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Name&nbsp;
-              <Tooltip title="First and Last Name?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          }
-        >
-          {getFieldDecorator('name', {
-            rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              How did you find out about OLS&nbsp;
-              <Tooltip title="OLS promoter - ref. ?">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          }
-        >
-          {getFieldDecorator('reference', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              select OLSLM options &nbsp;
-              <Tooltip title=" OLSLM LIGHT MINUTES OLS equity ">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </span>
-          }
-        >
-          {getFieldDecorator('olslmaccounttype', {
-            rules: [{ required: true, whitespace: true }]
-            })(
-              <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
-                <Radio style={radioStyle} value="OLSLM Investor">
-                  OLSLM Investor
-                  <Tooltip title=" (90, 180, 360 days Investing benefits) ">
-                <Icon type="question-circle-o" />
-              </Tooltip> 
-                </Radio>
-                <Radio style={radioStyle} value="OLSLM buyer">
-                  OLSLM buyer 
-                  <Tooltip title=" (min. 1LM category 9 or 10LM category 3) ">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-                  {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
-                </Radio>
-              </Radio.Group>
-            )
-          }
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Your LOCATION (country, city/town)&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('location', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-          })(<Input />)}
-        </Form.Item>
-        <Form.Item
-              label={
-                <span>
-                  Agreement 1&nbsp;
-                </span>
-              }
-        >
-          {getFieldDecorator('agreement1', {
-            valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
-          })(
-            <Checkbox>
-              I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
-            </Checkbox>,
-          )}
-        </Form.Item>
-        <Form.Item
-          label={
-            <span>
-              Agreement 2&nbsp;
-            </span>
-          }
-        >
-          {getFieldDecorator('agreement2', {
-            valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
-          })(
-            <Checkbox>
-              All the information submitted in this form is true and correct
-              <Tooltip title=" after registration you will receive confirmation your account created ">
-                <Icon type="question-circle-o" />
-              </Tooltip>
-            </Checkbox>,
-          )}
-        </Form.Item>
-        <Form.Item {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">
-            Register
-          </Button>
-        </Form.Item>
-      </Form>
-      </Card>
+      <div style={{display: "table", position: "absolute", height: "100%", width: "100%"}}>
+        <div style={{marginLeft: "auto", marginRight: "auto", marginTop: "50px", marginBottom: "10px", textAlign: "center"}}>
+          <Card style={{display:"inline-block", textAlign: "initial"}}>
+            <Form onSubmit={this.handleSubmit}>
+              <div style={{"textAlign": "center"}}>
+                <Title level={3}>OLSLM Registration</Title>
+              </div>
+              <br />
+              <Form.Item label="E-mail">
+                {getFieldDecorator('email', {
+                  rules: [
+                    {
+                      type: 'email',
+                      message: 'The input is not valid E-mail!',
+                    },
+                    {
+                      required: true,
+                      message: 'Please input your E-mail!',
+                    },
+                  ],
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item label="Password" hasFeedback>
+                {getFieldDecorator('password', {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please input your password!',
+                    },
+                    {
+                      validator: this.validateToNextPassword,
+                    },
+                  ],
+                })(<Input.Password />)}
+              </Form.Item>
+              <Form.Item label="Confirm Password" hasFeedback>
+                {getFieldDecorator('confirm', {
+                  rules: [
+                    {
+                      required: true,
+                      message: 'Please confirm your password!',
+                    },
+                    {
+                      validator: this.compareToFirstPassword,
+                    },
+                  ],
+                })(<Input.Password onBlur={this.handleConfirmBlur} />)}
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    Name&nbsp;
+                    <Tooltip title="First and Last Name?">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
+              >
+                {getFieldDecorator('name', {
+                  rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    How did you find out about OLS&nbsp;
+                    <Tooltip title="OLS promoter - ref. ?">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
+              >
+                {getFieldDecorator('reference', {
+                  rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    select OLSLM options &nbsp;
+                    <Tooltip title=" OLSLM LIGHT MINUTES OLS equity ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
+              >
+                {getFieldDecorator('olslmaccounttype', {
+                  rules: [{ required: true, whitespace: true }]
+                  })(
+                    <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                      <Radio style={radioStyle} value="OLSLM Investor">
+                        OLSLM Investor
+                        <Tooltip title=" (90, 180, 360 days Investing benefits) ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip> 
+                      </Radio>
+                      <Radio style={radioStyle} value="OLSLM buyer">
+                        OLSLM buyer 
+                        <Tooltip title=" (min. 1LM category 9 or 10LM category 3) ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                        {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                      </Radio>
+                    </Radio.Group>
+                  )
+                }
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    Your LOCATION (country, city/town)&nbsp;
+                  </span>
+                }
+              >
+                {getFieldDecorator('location', {
+                  rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item
+                    label={
+                      <span>
+                        Agreement 1&nbsp;
+                      </span>
+                    }
+              >
+                {getFieldDecorator('agreement1', {
+                  valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
+                })(
+                  <Checkbox>
+                    I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
+                  </Checkbox>,
+                )}
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    Agreement 2&nbsp;
+                  </span>
+                }
+              >
+                {getFieldDecorator('agreement2', {
+                  valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
+                })(
+                  <Checkbox>
+                    All the information submitted in this form is true and correct
+                    <Tooltip title=" after registration you will receive confirmation your account created ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </Checkbox>,
+                )}
+              </Form.Item>
+              <Form.Item {...tailFormItemLayout}>
+                <Button type="primary" htmlType="submit">
+                  Register
+                </Button>
+              </Form.Item>
+            </Form>
+          </Card>
+        </div>
       </div>
     );
   }
