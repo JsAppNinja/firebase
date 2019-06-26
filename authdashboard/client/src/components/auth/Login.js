@@ -32,48 +32,50 @@ class BaseLogin extends Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
-      <div style={{position: "absolute", top: "50%" ,left: "50%", "marginTop": "-350px", "marginLeft": "-225px"}}>
-        <Card>
-          <Form onSubmit={this.handleSubmit} className="login-form">
-            <div style={{"paddingBottom": "10px", "textAlign": "center"}}>
-              <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">787.OLS onelightsystem Meditation® </a> </Title>
-            </div>
-            <Form.Item>
-              {getFieldDecorator('username', {
-                rules: [{ required: true, message: 'Please input your username!' }],
-              })(
-                <Input
-                  prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  placeholder="Username"
-                />,
-              )}
-            </Form.Item>
-            <Form.Item>
-              {getFieldDecorator('password', {
-                rules: [{ required: true, message: 'Please input your Password!' }],
-              })(
-                <Input
-                  prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                  type="password"
-                  placeholder="Password"
-                />,
-              )}
-            </Form.Item>
-            <Form.Item>
-              {getFieldDecorator('remember', {
-                valuePropName: 'checked',
-                initialValue: true,
-              })(<Checkbox>Remember me</Checkbox>)}
-              <a className="login-form-forgot" href="/passwordreset">
-                Forgot password
-              </a>
-              <Button type="primary" htmlType="submit" className="login-form-button">
-                Log in
-              </Button>
-              Or <a href="/register">register [Beta]</a>
-            </Form.Item>
-          </Form>
-        </Card>
+      <div style={{display: "table", position: "absolute", height: "100%", width: "100%"}}>
+        <div style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", textAlign: "center"}}>
+          <Card style={{display:"inline-block", textAlign: "initial"}}>
+            <Form onSubmit={this.handleSubmit} className="login-form">
+              <div style={{"paddingBottom": "10px", "textAlign": "center"}}>
+                <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">787.OLS onelightsystem Meditation® </a> </Title>
+              </div>
+              <Form.Item>
+                {getFieldDecorator('username', {
+                  rules: [{ required: true, message: 'Please input your username!' }],
+                })(
+                  <Input
+                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    placeholder="Username"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('password', {
+                  rules: [{ required: true, message: 'Please input your Password!' }],
+                })(
+                  <Input
+                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                    type="password"
+                    placeholder="Password"
+                  />,
+                )}
+              </Form.Item>
+              <Form.Item>
+                {getFieldDecorator('remember', {
+                  valuePropName: 'checked',
+                  initialValue: true,
+                })(<Checkbox>Remember me</Checkbox>)}
+                <a className="login-form-forgot" href="/passwordreset">
+                  Forgot password
+                </a>
+                <Button type="primary" htmlType="submit" className="login-form-button">
+                  Log in
+                </Button>
+                Or <a href="/register">register [Beta]</a>
+              </Form.Item>
+            </Form>
+          </Card>
+        </div>
       </div>
     );
   }

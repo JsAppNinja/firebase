@@ -37,7 +37,7 @@ export class App extends Component {
     this.firebase.auth.onAuthStateChanged(function(user) {
       if(user) {
         appThis.setState({ authenticated: true });
-        appThis.props.history.push("/home");
+        appThis.props.history.push("/home/olsupdates");
       } else {
         appThis.setState({ authenticated: false });
       }

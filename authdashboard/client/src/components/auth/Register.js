@@ -31,8 +31,9 @@ export default class Register extends Component {
   render() {
     console.log(this.state);
     return (
-      <div style={{position: "absolute", top: "20%" ,left: "50%", "margincenter": "-350px", "marginLeft": "-255px"}}>
-        <Card style={{ display: "inline-flex" }}>
+      <div style={{display: "table", position: "absolute", height: "100%", width: "100%"}}>
+        <div style={{marginLeft: "auto", marginRight: "auto", marginTop: "100px", textAlign: "center"}}>
+          <Card style={{display:"inline-block", textAlign: "initial"}}>
           <div>
             <div style={{"textAlign": "center"}}>
               <Title level={3}>Select an account type</Title>
@@ -63,6 +64,7 @@ export default class Register extends Component {
             </Link>
           </div>
         </Card>
+      </div>
       </div>
     );
   }
