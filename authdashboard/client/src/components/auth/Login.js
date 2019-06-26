@@ -37,7 +37,7 @@ class BaseLogin extends Component {
           <Card style={{display:"inline-block", textAlign: "initial"}}>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <div style={{"paddingBottom": "10px", "textAlign": "center"}}>
-                <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">787.OLS onelightsystem Meditation® </a> </Title>
+                <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">792.OLS onelightsystem Meditation® </a> </Title>
               </div>
               <Form.Item>
                 {getFieldDecorator('username', {
