@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import { FirebaseContext } from '../Firebase';
 
@@ -38,16 +39,24 @@ export default class NavMenu extends Component {
         <div className="logo" />
         <Menu theme="light" defaultSelectedKeys={['1']} mode="inline" onClick={this.onMenuClick}>
           <Menu.Item key="1">
+          <Icon type="home" />
+            <span>Home</span>
+            <Link to="/home/olsupdates" />
+          </Menu.Item>
+          <Menu.Item key="olsstats">
           <Icon type="file" />
             <span>OLS stats</span>
+            <Link to="/home/olsstats" />
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item key="profile">
             <Icon type="user" />
             <span>Profile</span>
+            <Link to="/home/profile" />
           </Menu.Item>
           <Menu.Item key="3">
             <Icon type="setting" />
             <span>Support</span>
+            <Link to="/home/settings" />
           </Menu.Item>
           <Menu.Item key="4">
             <Icon type="logout" />
