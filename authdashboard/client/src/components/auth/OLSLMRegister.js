@@ -330,6 +330,7 @@ class RegistrationForm extends React.Component {
             </Form>
           </Card>
         </div>
+        <script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3cf19ffd-9b04-47f7-af18-5c57fe7ef82b"> </script>
       </div>
     );
   }

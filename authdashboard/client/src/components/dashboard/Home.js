@@ -6,7 +6,7 @@ import NavMenu from "../navigation/NavMenu";
 import OLSStats from "./OLSStats";
 import OLSUpdates from "./OLSUpdates";
 import Profile from "./Profile";
-import Settings from "./Settings";
+import Support from "./Support";
 
 const { Title } = Typography;
 const { Header, Content, Footer, Sider } = Layout;
@@ -35,15 +35,16 @@ export default class Home extends Component {
           <Content style={{ margin: '0 16px' }}>
             <Breadcrumb style={{ margin: '16px 0' }}>
               <Breadcrumb.Item>OLS student</Breadcrumb.Item>
-              <Breadcrumb.Item> <a href='https://www.olsme.com.home.olsupdates'>OLS updates</a></Breadcrumb.Item>
-              <Breadcrumb.Item>Submit OLSLM, OLSM, OLSME</Breadcrumb.Item>
-              <Breadcrumb.Item>Request OLS initi</Breadcrumb.Item>
+              <Breadcrumb.Item> <a href='https://www.olsme.com/home/olsupdates'>OLS updates</a></Breadcrumb.Item>
+              <Breadcrumb.Item>Enter OLSLM OLSM OLSME</Breadcrumb.Item>
+              <Breadcrumb.Item>Manual</Breadcrumb.Item>
+              <Breadcrumb.Item> <a href='https://www.olsme.com/home/support'></a> Support and initi </Breadcrumb.Item>
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: "100%" }}>
               <Route path="/home/olsupdates" component={ OLSUpdates } />
               <Route path="/home/olsstats" component={ OLSStats } />
               <Route path="/home/profile" component={ Profile } />
-              <Route path="/home/settings" component={ Settings } />
+              <Route path="/home/Support" component={ Support } />
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">onelightsystem OLS ©2017-2019 </a> </Footer>

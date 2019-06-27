@@ -24,7 +24,8 @@ export default class OLSUpdates extends Component {
          <p> <br></br> </p>
          </body>
        
-       <p>791.OLSM</p>
+       <p>791.OLSM </p>
+       <p>790.OLSM </p>
        <p>789.OLSM  </p>
        <ul>
          <li>789.OLS <a href= 'https://www.ols-med.net/olsm/ols-updates/729/776/789'> amba |  iee.aeo. | aste eae [Solstice Live updates 1/3/181 (2.2LQ) -- 06/22] </a> </li>
@@ -39,7 +40,7 @@ export default class OLSUpdates extends Component {
        <p>784. OLS2-9M__(178) 2 / 91</p>
        <p>783.OLSM </p>
        <ul>
-         <li>OLS iee.|cto (Login beta version www.olsme.com)</li>
+         <li>OLS iee.|cto (Login beta version www.olsme.com developings progress)</li>
        </ul>
        <body> 
          <p> <br></br> </p>
@@ -57,13 +58,13 @@ export default class OLSUpdates extends Component {
        <p>779. <a href= 'https://youtu.be/4GNdYFCS1aY'> OLSM___2LH </a>, olslm <a href= 'https://youtu.be/jHcYnFuZpTU' >  14.4LH </a> </p>
        <p>778.OLSM</p>
        <ul>
-         <li>OLS amba | iee.aeo [JUPITER Transition  85 / 2 (171) --- 90 / 2 (176)]</li>
+         <li>778. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/776 ' > OLS amba | iee.aeo [JUPITER Transition 85/2(171) -- 90/2(176)]</a> </li>
        </ul>
        <p>777. OLSM__14LH</p>
        <p>776. OLSM__1LH , 14LH </p>
        <p>775. OLSM__ 1LH , 14LH  </p>
        <ul>
-         <li>OLS iee. [debunking eng.lish "sunglasses myth" 06/08 vs (169) 2/82] </li>
+         <li>775. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/776/775 ' >OLS iee. [debunking eng.lish "sunglasses myth" 06/08 vs (169) 2/82] </a> </li>
        </ul>
        <p>774. OLS1-9 M___. 2LH , 14LH   (168) 2 / 81</p>
        <body> 
@@ -78,7 +79,7 @@ export default class OLSUpdates extends Component {
          <p>773. OLSM__9-9_2LH. , 14LH (167)2 / 80</p>
          <p>772. OLSM___2LH , 14LH  </p>
          <ul>
-         <li>OLS amba | iee.aeo [public recommendations to the National Security Implications of Climate Change Open Hearing]</li>
+         <li>772. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/776/771-ols-amba  ' > OLS amba | iee.aeo [public recommendations to the National Security Implications of Climate Change Open Hearing] </a> </li>
        </ul>
          <p>771. OLSM___3LH , 14LH</p>
          <p>770. OLSM___14LH</p>
@@ -97,7 +98,7 @@ export default class OLSUpdates extends Component {
          <p> <br></br> </p>
          </body>
          <p>764. OLS LM 4LH , OLSM 9-9_14LH 158/2-72</p>
-         <p>763.  OLS iee. | aste eae nazara.svitlo (LM) log. 110 LightDays  600-710</p>
+         <p>763. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/730/763 ' > OLS iee. | aste eae nazara.svitlo (LM) log. 110 LightDays  600-710  </a>  </p>
          <p>762. OLS LM 1LH. , 14LH , 14.3LH</p>
          <p>761. OLSM___14LH</p>
          <p>760. OLSM___2LH , OLS LM 14LH</p>
@@ -105,7 +106,7 @@ export default class OLSUpdates extends Component {
          <p>758. OLSM__3LH , 14LH</p>
          <p>757. OLSM__13LH , 14LH</p>
          <ul>
-         <li>OLS founder |  CEO  | OLS iee.aeo [OLSLM] (151)2/65</li>
+         <li>757. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/747/757-ols-lm-updates' > OLS founder |  CEO  | OLS iee.aeo [OLSLM] (151)2/65 </a> </li>
        </ul>
          <p>756. OLSM.1-9.13LH (150)2 / 64</p>
              <body> 
@@ -144,7 +145,9 @@ export default class OLSUpdates extends Component {
          <p>742.OLS LM 2LH </p>
           <p>741.OLSM___1LH,  13 LH </p>
           <ul>
-         <li>741.135/2-49 OLS founder | aste. eae. (master teacher) Nazar Asvitlo OLS inuo Rei-Wen Ho officially available instructions also in mandarin 太 陽 光 凝 視 系 統 </li>
+         <li>741.135/2-49  <a href= ' http://www.ols-med.net/olsm/ols-updates/729/741-1352-49 ' >
+  OLS founder | aste. eae. (master teacher) Nazar Asvitlo
+OLS inuo Rei-Wen Ho officially available instructions also in mandarin 太 陽 光 凝 視 系 統  </a></li>
        </ul>
          <p>740.OLSM __13LH </p>
          <p>739.OLSM __13LH </p>
@@ -164,7 +167,7 @@ export default class OLSUpdates extends Component {
           <p>734. [OLSM__2LH_], 12LH </p>
           <p>733. [OLSM__3LH_], 12LH </p>
           <ul>
-         <li>OLS amba | iee.aeo. | aste.eae  [CORRECT TIME up-dates [2LY-(day127)/ season 2- day 41] ~ [04/27]  </li>
+         <li>733. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/733_1 ' > OLS  amba | iee.aeo. | aste.eae  [CORRECT TIME up-dates [2LY-(day127)/ season 2- day 41] ~ [04/27]  </a></li>
        </ul>
           <p>732. [OLSM___3LH], 12LH, 13LH </p>
           <p>731. [OLSM___2LH] </p>
@@ -293,7 +296,7 @@ export default class OLSUpdates extends Component {
          <p> <br></br> </p>
          </body>
                <p>665.59 OLSM___9–9] 1LH</p>
-<p>660.54 OLS iee.aeo.eae [CORRECT TIME up-dates 54/1/1]</p>
+<p>660.54 <a href= 'https://www.ols-med.net/olsm/ols-updates/507/500/660 ' >  OLS iee.aeo.eae [CORRECT TIME up-dates 54/1/1] </a></p>
 <p>657.51 OLSM___1–9] 1,2,8 & 9 LH</p>
 <body> 
              <p> <br></br> </p>
@@ -336,7 +339,7 @@ export default class OLSUpdates extends Component {
          </body>
                <p>637.OLSM___ 8--9] 2LH & 9LH (1/20)</p>
 <p>636.OLSM___ 7--9] 3LH  (1/19) </p>
-<p>635. OLS eae (teacher) nazara.svitlo 110LightDays (LM)log. 490-600 </p>
+<p>635. <a href= ' https://www.ols-med.net/olsm/ols-updates/604/620/635 ' > OLS eae (teacher) nazara.svitlo 110LightDays (LM)log. 490-600 </a></p>
 <p>634.OLSM___ 5--9] 3LH  (1/18) </p>
 <p>633. OLS eae experiences witnessing `starships` visitation </p>
 <body> 
@@ -384,7 +387,7 @@ export default class OLSUpdates extends Component {
 <p>607. OLSM___[5–9] </p>  
 <p>606. OLS inves. Public ICO updates </p>
 <p>605.  ONE LIGHT SYSTEM Meditations  OLSM </p>
-<p>604. OLS 1Ly./Q7 New Light [Live stream] updates 12.19 </p>
+<p>604.<a href= 'https://www.ols-med.net/olsm/ols-updates/604  ' >   OLS 1.7Q New Light [Live updates 12.19] </a>  </p>
 <p>603. OLSM 1-9  </p>
 <body> 
              <p> <br></br> </p>
@@ -401,7 +404,7 @@ export default class OLSUpdates extends Component {
          <p> <br></br> </p>
          </body>
                <p>587. OLS Meditation class now Live on udemy </p>
-<p>586. OLS iense drafting 2019-2022 roadmap </p>
+<p>586. <a href= '  www.ols-med.net/olsm/ols-updates/580/586 ' >  OLS iense drafting 2019-2022 roadmap </a> </p>
 
 <body> 
              <p> <br></br> </p>
@@ -428,12 +431,12 @@ export default class OLSUpdates extends Component {
          <body> 
          <p> <br></br> </p>
          </body>
-               <p>575. [OLSM:05](5) (9--9) updates OLS 11/20 </p>
+               <p>575. [OLSM:05](5) (9--9)  11/20 </p>
 <p>574. OLS.days.[OLS iense 1.6 Light year] </p>
-<p>573. OLS promoter updates  </p>
+<p>573. OLS promoter  </p>
 <p>572. OLSM:05(5) 6--9 teacher 11/17 </p>
 <p>569. OLSM:05(5) updates 3--9  OLS 11/14 </p>
-<p>568.OLS iense attending CA Statewide Enviro.Flows.group[ECOLOGY]  </p>
+<p>568. OLS iense attending CA Statewide Enviro.Flows.group[ECOLOGY]  </p>
 <body> 
              <p> <br></br> </p>
                </body>
@@ -460,13 +463,13 @@ export default class OLSUpdates extends Component {
          <body> 
          <p> <br></br> </p>
          </body>
-<p>557 OLS updates 11/2: ols e-tech, OLSME. </p>
-<p>556 (OLS updates 11/1: OLS iee.aeo announces: OLS Lighchain upgrades, tech. support apps.,  new OLS LM services)</p>
-<p>555 . OLS iense Light science department (support petition)</p>
-<p>554.OLS iense(iee) & aunselo (aeo) Acuired a scientific Aqua[ECOLOGY] Dep. of the ONELIGHTSYSTEM OLS </p>
-<p>553. (OLS inves. 21.3% updated) </p>
-<p>552. OLS [iee.aeo] on pre-seed round open.</p>
-<p>551 (OLS web.IT.developer.admin. teams project for public tenders open)</p>
+       <p>557 OLS updates 11/2: OLSME developed </p>
+       <p>556 (OLS updates 11/1: OLS iee.aeo announces: OLS Lighblockchain and OLSM upgrades, OLSLM services)</p>
+       <p>555 . OLS iense Light science department (support petition)</p>
+       <p>554.OLS iense(iee) & aunselo (aeo) Acuired a scientific Aqua[ECOLOGY] Dep. of the ONELIGHTSYSTEM OLS </p>
+       <p>553. (OLS investor 21.3% updated) </p>
+       <p>552. OLS [iee.aeo] on pre-seed round open.</p>
+       <p>551 (OLS web.IT.developer.admin. teams project for public tenders open)</p>
 <body> 
              <p> <br></br> </p>
                </body>
@@ -476,14 +479,16 @@ export default class OLSUpdates extends Component {
          <body> 
          <p> <br></br> </p>
          </body>
-               <p>542.OLS.days. roadmap 10.19draft03 </p>
-<p>507. OLS Service Fees [ VIDEO ] Update E3 09.22</p>
-<p>500.OLS LIVE stream initial version updates 09.18  600am </p>
-<p>490. OLS teacher (LM)log. nazara.svitlo </p>
-<p>365. OLS iee.aeo (iense & aunselo) LIGHT time a proper is correct time measurement  </p>
-<p>200. LDays Everyday Receiving Direct Light </p>
-<p>150.OLS Meditations800 [LIVE VIDEO] updates</p>
-<p>144.  OLS2017 FREE 70 introductions </p>
+        <p>542.OLS.days. roadmap 10.19 </p>
+        <p>507. OLS Service Fees [ VIDEO ] Update E3 09.22</p>
+        <p>500.OLS LIVE stream initial version updates 09.18  600am </p>
+        <p>490. <a href= 'https://onelightsystem.blogspot.com/2018/09/ols-lmlog-teacher-naza-ra-svitlo-day490.html ' >  OLS teacher (LM)log. nazara.svitlo 490Days </a>   </p>
+        <p>365. OLS iee.aeo (iense & aunselo) Light science a proper time measurement  </p>
+        <p>200. <a href= 'https://onelightsystem.blogspot.com/2017/09/490-ols-teacher-lmlog-nazarasvitlo.html ' >  200Days Everyday Receiving Direct Light Record settling  </a></p>
+        <p>150.<a href= ' https://youtu.be/AFSmQTWFvdk ' >  OLS Meditations800 [LIVE VIDEO] updates </a></p>
+        <p> 144.  OLS2017 FREE 70 introductions </p>
+        <p> 15. <a href= ' 05.08.17 https://youtu.be/tL-ImjrfQ-8 ' > OLS international instructors call </a> </p> 
+        <p>  5. <a href= ' https://www.facebook.com/events/697399257087507/ ' > OLS founder | teacher nazarasvitlo gives presentation in Foster city CA library  </a> </p>
         <p>  0 . 1Light Minute captured/ in-puted into the OLS DATA®©blockchain   04.24.2017</p>
        </div>
     
