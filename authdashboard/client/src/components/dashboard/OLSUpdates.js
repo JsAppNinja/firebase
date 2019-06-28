@@ -5,7 +5,9 @@ export default class OLSUpdates extends Component {
   render() {
     return (
           <div>
-       
+        <head>
+<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3cf19ffd-9b04-47f7-af18-5c57fe7ef82b"> </script>
+      </head>
        <h1>OLS iee.aeo </h1>
          <p>804. <a href= 'https://www.youtube.com/watch?v=C1EOn6r4U4w'> OLS amba |  iee.aeo     SATURN Transition   14/3 (198)  --- 19/3 (203) </a> </p>
          <body> 
