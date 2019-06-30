@@ -16,9 +16,13 @@ class BaseLogin extends Component {
         console.log('Received values of form: ', values);
 
         // Now authenticate user
-        this.context.signInUser(values.username, values.password)
+        this.firebase.signInUser(values.username, values.password)
         .then(() => {
-          console.log("Signed in");
+          this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
+          .then((doc) => {
+            this.firebase.dbUser = doc.data();
+            console.log("Signed in");
+          })
         })
         .catch(error => {
           this.setState({ error });
@@ -28,6 +32,10 @@ class BaseLogin extends Component {
       }
     });
   };
+
+  componentDidMount() {
+    this.firebase = this.context;
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;

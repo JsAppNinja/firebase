@@ -55,7 +55,7 @@ class Firebase {
     return this.db.collection("userlist").doc(uid).set(accountStatus);  
   }
 
-  setUserData(uid) {
+  fetchUserData(uid) {
     return this.db.doc(`userlist/${uid}`).get()
       .then((doc) => {
         if(doc.exists) {
@@ -70,7 +70,10 @@ class Firebase {
       })
   }
 
-  //user = uid => this.db.ref(`users/${uid}`);
+  updateUserData(data) {
+    return this.db.doc(`${this.mainAccountType}/${this.auth.currentUser.uid}`)
+      .set(data, { merge: true });
+  }
 }
 
 export default Firebase;

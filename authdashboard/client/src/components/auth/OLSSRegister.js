@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { withRouter } from 'react-dom';
 import 'antd/dist/antd.css';
 import { Link } from "react-router-dom"; 
 import { FirebaseContext } from '../Firebase';
@@ -58,6 +58,10 @@ class RegistrationForm extends React.Component {
     }
   }
 
+  goLoginPage = e =>  {
+    this.props.history.push("/");
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -96,7 +100,12 @@ class RegistrationForm extends React.Component {
             //var userUid = promRes[2].uid;
             //console.log(userUid);
             //console.log(promRes[1].id); // Doc Ref
-            Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+            
+            this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
+            .then((doc) => {
+              this.firebase.dbUser = doc.data();
+              Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+            })
           })
           .catch(error => {
             Modal.error({ title: "Issue Creating Account", content: error.message });

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Link } from "react-router-dom"; 
 import { FirebaseContext } from '../Firebase';
+import ConstantsList from '../../constants/ConstantsList';
 import {
   Modal,
   Form,
@@ -60,15 +61,21 @@ class RegistrationForm extends React.Component {
         // Ensure user agreed with ToS
         if(values.agreement1 && values.agreement2) {
           this.firebase.createUser(values.email, values.password)
-          .then(() => {
+          .then((promRes) => {
+            var user = promRes.user;
              // Send email verification and add user data to database
              return Promise.all([
                this.firebase.sendEmailVerification(),
-               this.firebase.createUserFireStore(data)
+               this.firebase.createUserFireStore(data, ConstantsList.OLSLM_COL, user.uid),
+               this.firebase.addToUserList(user.uid, { type: ConstantsList.OLSLM_COL })
              ]);
            })
           .then(() => {
-            Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+            this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
+            .then((doc) => {
+              this.firebase.dbUser = doc.data();
+              Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+            })
           })
           .catch(error => {
             Modal.error({ title: "Unable to Create Account", content: error.message });

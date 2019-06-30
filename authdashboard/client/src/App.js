@@ -39,20 +39,22 @@ export class App extends Component {
       if(user) {
         console.log(user);
         
-        firebaseThis.setUserData(user.uid)
-        .then((doc) => {
-          if(doc.exists) {
-            console.log(doc.data());
-            firebaseThis.dbUser = doc.data();
+        //firebaseThis.setUserData(user.uid)
+        //.then((doc) => {
+        //  if(doc.exists) {
+        //    console.log(doc.data());
+        //    firebaseThis.dbUser = doc.data();
 
-            appThis.setState({ authenticated: true });
-            appThis.props.history.push("/home/olsupdates");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        })
+        //    appThis.setState({ authenticated: true });
+        //    appThis.props.history.push("/home/olsupdates");
+        //  }
+        //})
+        //.catch((error) => {
+        //  console.log(error);
+        //})
 
+        appThis.setState({ authenticated: true });
+        appThis.props.history.push("/home/olsupdates");
       } else {
         appThis.setState({ authenticated: false });
       }
