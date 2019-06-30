@@ -291,7 +291,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('teacher', {
                   rules: [{ required: false, message: 'Please select OLS official!', whitespace: true }],
-                  initialValue: "OLS aste. eae | Nazar Asvitlo  CA USA"
+                  initialValue: this.state.teacher
                   })(
                     <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                       <Radio style={radioStyle} value={"OLS aste. eae | Nazar Asvitlo  CA USA"}>
