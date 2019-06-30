@@ -17,6 +17,8 @@ class Firebase {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
     this.db = app.firestore();
+    this.dbUser = {};
+    this.mainAccountType = null;
   }
 
   // Auth
@@ -45,9 +47,30 @@ class Firebase {
   }
 
   // Firestore
-  createUserFireStore(data) {
-    return this.db.collection("users").add(data);
+  createUserFireStore(data, accountType, uid) {
+    return this.db.collection(accountType).doc(uid).set(data);
   }
+
+  addToUserList(uid, accountStatus) {
+    return this.db.collection("userlist").doc(uid).set(accountStatus);  
+  }
+
+  setUserData(uid) {
+    return this.db.doc(`userlist/${uid}`).get()
+      .then((doc) => {
+        if(doc.exists) {
+          console.log(doc.data())
+          
+          var type = doc.data().type;
+          this.mainAccountType = type;
+          return this.db.doc(`${type}/${uid}`).get()
+        } else {
+          throw new Error("Auth state changed before mainAccountType was fetched");
+        }
+      })
+  }
+
+  //user = uid => this.db.ref(`users/${uid}`);
 }
 
 export default Firebase;

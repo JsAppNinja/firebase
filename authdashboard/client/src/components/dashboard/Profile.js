@@ -23,6 +23,7 @@ import {
   TimePicker,
   Typography
 } from 'antd';
+import * as moment from 'moment'
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -154,6 +155,7 @@ class Profile extends Component {
 
   componentDidMount() {
     this.firebase = this.context;
+    this.setState({ ...this.firebase.dbUser, mainAccountType: this.firebase.mainAccountType });
   }
 
   render() {
@@ -195,67 +197,28 @@ class Profile extends Component {
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
 
+    console.log(this.state)
+
     return (
       <div style={{ background: '#fff' }}>
-            <Form onSubmit={this.handleSubmit}>
-              <div style={{"textAlign": "left"}}>
-                <Title level={3}>User Profile</Title>
-              </div>
-              <br />
-              <Form.Item label="E-mail">
-                {getFieldDecorator('email', {
-                  rules: [
-                    {
-                      type: 'email',
-                      message: 'The input is not valid E-mail!',
-                    },
-                    {
-                      required: false,
-                      message: 'Please input your E-mail!',
-                    },
-                  ],
-                })(<Input />)}
-              </Form.Item>
-              <Form.Item label="Password" hasFeedback>
-                {getFieldDecorator('password', {
-                  rules: [
-                    {
-                      required: false,
-                      message: 'Please input your password!',
-                    },
-                    {
-                      validator: this.validateToNextPassword,
-                    },
-                  ],
-                })(<Input.Password />)}
-              </Form.Item>
-              <Form.Item label="Confirm Password" hasFeedback>
-                {getFieldDecorator('confirm', {
-                  rules: [
-                    {
-                      required: false,
-                      message: 'Please confirm your password!',
-                    },
-                    {
-                      validator: this.compareToFirstPassword,
-                    },
-                  ],
-                })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-              </Form.Item>
-              <Form.Item
-                label={
-                  <span>
-                    Name&nbsp;
-                    <Tooltip title="First and Last Name?">
-                      <Icon type="question-circle-o" />
-                    </Tooltip>
-                  </span>
-                }
-              >
-                {getFieldDecorator('name', {
-                  rules: [{ required: false, message: 'Please input your name!', whitespace: true }],
-                })(<Input />)}
-              </Form.Item>
+        <Form>
+          <Form.Item
+            label={
+              <span>
+                Name&nbsp;
+                <Tooltip title="First and Last Name?">
+                  <Icon type="question-circle-o" />
+                </Tooltip>
+              </span>
+            }
+          >
+            {getFieldDecorator('name', {
+              rules: [{ required: false, message: 'Please input your name!', whitespace: true }],
+              initialValue: this.state.name
+            })(<Input />)}
+          </Form.Item>
+          { this.state.mainAccountType === "uOLSS" &&
+            <div>
               <Form.Item
                 label={
                   <span>
@@ -264,8 +227,9 @@ class Profile extends Component {
                 }
               >
                 {getFieldDecorator('olsexperience', {
-                  rules: [{ required: false, message: 'Please input your experience!', whitespace: true }]
-                  })(
+                  rules: [{ required: false, message: 'Please input your experience!', whitespace: true }],
+                  initialValue: this.state.olsexperience
+                })(
                     <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                       <Radio style={radioStyle} value={"New"}>
                         New 
@@ -292,6 +256,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('reference', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.reference
                 })(<Input />)}
               </Form.Item>
               <Form.Item
@@ -306,6 +271,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('teacher', {
                   rules: [{ required: false, message: 'Please select OLS official!', whitespace: true }],
+                  initialValue: "OLS aste. eae | Nazar Asvitlo  CA USA"
                   })(
                     <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                       <Radio style={radioStyle} value={"OLS aste. eae | Nazar Asvitlo  CA USA"}>
@@ -330,6 +296,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('location', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.loc
                 })(<Input />)}
               </Form.Item>
               <Form.Item
@@ -341,6 +308,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('meditationexperience', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.meditationexperience
                 })(<Input />)}
               </Form.Item>
               <Form.Item
@@ -352,6 +320,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('health', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.health
                 })(<Input />)}
               </Form.Item>
               <Form.Item
@@ -363,6 +332,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('start', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true, type: 'object' }],
+                  initialValue: moment(this.state.start)
                 })(
                     <DatePicker onChange={this.setDate} />
                   )
@@ -389,8 +359,9 @@ class Profile extends Component {
                 }
               >
                 {getFieldDecorator('credits', {
-                  rules: [{ type: "array" }], initialValue: [""]}
-                )(
+                  rules: [{ type: "array" }], 
+                  initialValue: this.state.credits
+                })(
                   <Checkbox.Group
                     onChange={(values) => { console.log(values) }} 
                   >
@@ -424,12 +395,14 @@ class Profile extends Component {
                   </Checkbox.Group>
                 )}
               </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Update Profile
-                </Button>
-              </Form.Item>    
-            </Form>
+            </div>
+          }
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Update Profile
+            </Button>
+          </Form.Item>    
+        </Form>
       </div>
     );
   }

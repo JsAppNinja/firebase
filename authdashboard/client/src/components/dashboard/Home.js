@@ -7,12 +7,15 @@ import OLSStats from "./OLSStats";
 import OLSUpdates from "./OLSUpdates";
 import Profile from "./Profile";
 import Settings from "./Settings";
+import { FirebaseContext } from '../Firebase';
 
 const { Title } = Typography;
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 export default class Home extends Component {
+  static contextType = FirebaseContext;
+
   state = {
     collapsed: true,
   };
@@ -21,6 +24,12 @@ export default class Home extends Component {
     console.log(collapsed);
     this.setState({ collapsed });
   };
+
+  componentDidMount() {
+    this.firebase = this.context;
+    console.log(this.firebase.dbUser);
+    console.log(this.firebase.auth.currentUser.uid);
+  }
 
   render() {
     return (

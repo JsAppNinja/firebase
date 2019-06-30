@@ -33,11 +33,26 @@ export class App extends Component {
   componentDidMount() {
     console.log(this.firebase);
     var appThis= this;
+    var firebaseThis = this.firebase;
     // Set listener for user authentication status
     this.firebase.auth.onAuthStateChanged(function(user) {
       if(user) {
-        appThis.setState({ authenticated: true });
-        appThis.props.history.push("/home/olsupdates");
+        console.log(user);
+        
+        firebaseThis.setUserData(user.uid)
+        .then((doc) => {
+          if(doc.exists) {
+            console.log(doc.data());
+            firebaseThis.dbUser = doc.data();
+
+            appThis.setState({ authenticated: true });
+            appThis.props.history.push("/home/olsupdates");
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+
       } else {
         appThis.setState({ authenticated: false });
       }
