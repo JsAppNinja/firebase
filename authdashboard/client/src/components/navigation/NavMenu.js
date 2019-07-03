@@ -56,7 +56,7 @@ export default class NavMenu extends Component {
           <Menu.Item key="3">
             <Icon type="setting" />
             <span>Support</span>
-            <Link to="/home/settings" />
+            <Link to="/home/Support" />
           </Menu.Item>
           <Menu.Item key="4">
             <Icon type="logout" />

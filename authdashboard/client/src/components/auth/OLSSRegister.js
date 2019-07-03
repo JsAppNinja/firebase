@@ -362,6 +362,9 @@ class RegistrationForm extends React.Component {
                 label={
                   <span>
                     Meditation Experience&nbsp;
+                    <Tooltip title=" what you been practices and how long ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
                   </span>
                 }
               >
