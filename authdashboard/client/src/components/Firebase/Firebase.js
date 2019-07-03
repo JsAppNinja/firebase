@@ -16,12 +16,18 @@ class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
+
+    // Second auth object just for account creations to not trigger event
+    // listener on auth and only allow user to log in is account is verified
+    this.auth2 = app.initializeApp(firebaseConfig, "Secondary").auth();
     this.db = app.firestore();
+    this.dbUser = {};
+    this.mainAccountType = null;
   }
 
   // Auth
   createUser(email, password) {
-    return this.auth.createUserWithEmailAndPassword(email, password);
+    return this.auth2.createUserWithEmailAndPassword(email, password);
   }
   
   signInUser(email, password) {
@@ -41,12 +47,36 @@ class Firebase {
   }
  
   sendEmailVerification() {
-    return this.auth.currentUser.sendEmailVerification();
+    return this.auth2.currentUser.sendEmailVerification();
   }
 
   // Firestore
-  createUserFireStore(data) {
-    return this.db.collection("users").add(data);
+  createUserFireStore(data, accountType, uid) {
+    return this.db.collection(accountType).doc(uid).set(data);
+  }
+
+  addToUserList(uid, accountStatus) {
+    return this.db.collection("userlist").doc(uid).set(accountStatus);  
+  }
+
+  fetchUserData(uid) {
+    return this.db.doc(`userlist/${uid}`).get()
+      .then((doc) => {
+        if(doc.exists) {
+          console.log(doc.data())
+          
+          var type = doc.data().type;
+          this.mainAccountType = type;
+          return this.db.doc(`${type}/${uid}`).get()
+        } else {
+          throw new Error("Auth state changed before mainAccountType was fetched");
+        }
+      })
+  }
+
+  updateUserData(data) {
+    return this.db.doc(`${this.mainAccountType}/${this.auth.currentUser.uid}`)
+      .set(data, { merge: true });
   }
 }
 

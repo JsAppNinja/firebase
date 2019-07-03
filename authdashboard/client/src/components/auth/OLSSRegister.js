@@ -1,8 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM, { withRouter } from 'react-dom';
 import 'antd/dist/antd.css';
 import { Link } from "react-router-dom"; 
 import { FirebaseContext } from '../Firebase';
+import ConstantsList from '../../constants/ConstantsList';
 import {
   Modal,
   Form,
@@ -57,6 +58,10 @@ class RegistrationForm extends React.Component {
     }
   }
 
+  goLoginPage = e =>  {
+    this.props.history.push("/");
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
@@ -81,18 +86,23 @@ class RegistrationForm extends React.Component {
         // Ensure user agreed with ToS
         if(values.agreement1 && values.agreement2) {
           this.firebase.createUser(values.email, values.password)
+          .then((promRes) => {
+            console.log(promRes.user.uid);
+            var user = promRes.user;
+            // Send email verification and add user data to database
+            return Promise.all([
+              this.firebase.sendEmailVerification(),
+              this.firebase.createUserFireStore(data, ConstantsList.OLSS_COL, user.uid),
+              this.firebase.addToUserList(user.uid, { type: ConstantsList.OLSS_COL })
+            ]);
+          })
           .then(() => {
-             // Send email verification and add user data to database
-             return Promise.all([
-               this.firebase.sendEmailVerification(),
-               this.firebase.createUserFireStore(data)
-             ]);
-           })
-          .then(() => {
-            Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+              Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+              this.props.history.push("/");
+              this.firebase.auth2.signOut();
           })
           .catch(error => {
-            Modal.error({ title: "Unable to Create Account", content: error.message });
+            Modal.error({ title: "Issue Creating Account", content: error.message });
             console.log(error); 
           });
         }

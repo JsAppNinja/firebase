@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Form, Icon, Input, Button, Checkbox, Typography } from 'antd';
+import { Modal, Card, Form, Icon, Input, Button, Checkbox, Typography } from 'antd';
 import '../../styles/css/login.css';
 import { FirebaseContext } from '../Firebase';
 import { Link, withRouter } from 'react-router-dom';
@@ -16,9 +16,20 @@ class BaseLogin extends Component {
         console.log('Received values of form: ', values);
 
         // Now authenticate user
-        this.context.signInUser(values.username, values.password)
+        this.firebase.signInUser(values.username, values.password)
         .then(() => {
-          console.log("Signed in");
+          if(this.firebase.auth.currentUser.emailVerified){
+            this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
+            .then((doc) => {
+              this.firebase.dbUser = doc.data();
+              console.log("Signed in");
+            })
+          } else {
+            Modal.warning({title: "Account not Verified", content: "To log in first verify your account"});
+
+            // Needed to redirect to /home otherwise App auth listener will not get retriggered
+            this.firebase.signOutUser();
+          }
         })
         .catch(error => {
           this.setState({ error });
@@ -28,6 +39,11 @@ class BaseLogin extends Component {
       }
     });
   };
+
+  componentDidMount() {
+    this.firebase = this.context;
+    console.log(this.firebase);
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;

@@ -23,6 +23,7 @@ import {
   TimePicker,
   Typography
 } from 'antd';
+import * as moment from 'moment'
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -64,38 +65,54 @@ class Profile extends Component {
         console.log('Received values of form: ', values);
 
         // Prep Data
-        var data = {
-          name: values.name,
-          reference: values.reference,
-          age: values.age,
-          credits: values.credits,
-          health: values.health,
-          loc: values.location,
-          meditationexperience: values.meditationexperience,
-          olsexperience: values.olsexperience,
-          teacher: values.teacher,
-          start: values.start.format()
+        var data = null;
+
+        if(this.state.mainAccountType === "uOLSS") {
+          data = {
+            name: values.name,
+            reference: values.reference,
+            credits: values.credits,
+            health: values.health,
+            loc: values.location,
+            meditationexperience: values.meditationexperience,
+            olsexperience: values.olsexperience,
+            teacher: values.teacher,
+            start: values.start.format()
+          }
+        } else if(this.state.mainAccountType === "uOLSME") {
+          data = {
+            credits: values.credits,
+            loc: values.location,
+            name: values.name,
+            olsexperience: values.olsexperience,
+            accounttype: values.accounttype,
+            reference: values.reference
+          }
+
+        } else if(this.state.mainAccountType === "uOLSLM") {
+          data = {
+            name: values.name,
+            reference: values.reference,
+            loc: values.location,
+            olslmaccounttype: values.olslmaccounttype
+          }
+        } else if(this.state.mainAccountType === "uOLSP") {
+          data = {
+            name: values.name,
+            reference: values.reference,
+            credits: values.credits,
+            olspaccounttype: values.olspaccounttype
+          }
         }
- 
-        // Create user account
-        // Ensure user agreed with ToS
-        //if(values.agreement1 && values.agreement2) {
-        //  this.firebase.createUser(values.email, values.password)
-        //  .then(() => {
-        //     // Send email verification and add user data to database
-        //     return Promise.all([
-        //       this.firebase.sendEmailVerification(),
-        //       this.firebase.createUserFireStore(data)
-        //     ]);
-        //   })
-        //  .then(() => {
-        //    Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
-        //  })
-        //  .catch(error => {
-        //    Modal.error({ title: "Unable to Create Account", content: error.message });
-        //    console.log(error); 
-        //  });
-        //}
+
+        // Update user data
+        if(data) {
+          this.firebase.updateUserData(data)
+          .then(() => {
+            Modal.success({ title: "Profile Updated!", content: "Your profile has been updated" });
+          });
+        }
+        
       } else {
         console.log('Account creation error');
       }
@@ -154,6 +171,11 @@ class Profile extends Component {
 
   componentDidMount() {
     this.firebase = this.context;
+    this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
+    .then((doc) => {
+      this.firebase.dbUser = doc.data();
+      this.setState({ ...this.firebase.dbUser, mainAccountType: this.firebase.mainAccountType });
+    })
   }
 
   render() {
@@ -195,67 +217,43 @@ class Profile extends Component {
       <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
     ));
 
+    console.log(this.state)
+
     return (
       <div style={{ background: '#fff' }}>
-            <Form onSubmit={this.handleSubmit}>
-              <div style={{"textAlign": "left"}}>
-                <Title level={3}>User Profile</Title>
-              </div>
-              <br />
-              <Form.Item label="E-mail">
-                {getFieldDecorator('email', {
-                  rules: [
-                    {
-                      type: 'email',
-                      message: 'The input is not valid E-mail!',
-                    },
-                    {
-                      required: false,
-                      message: 'Please input your E-mail!',
-                    },
-                  ],
-                })(<Input />)}
-              </Form.Item>
-              <Form.Item label="Password" hasFeedback>
-                {getFieldDecorator('password', {
-                  rules: [
-                    {
-                      required: false,
-                      message: 'Please input your password!',
-                    },
-                    {
-                      validator: this.validateToNextPassword,
-                    },
-                  ],
-                })(<Input.Password />)}
-              </Form.Item>
-              <Form.Item label="Confirm Password" hasFeedback>
-                {getFieldDecorator('confirm', {
-                  rules: [
-                    {
-                      required: false,
-                      message: 'Please confirm your password!',
-                    },
-                    {
-                      validator: this.compareToFirstPassword,
-                    },
-                  ],
-                })(<Input.Password onBlur={this.handleConfirmBlur} />)}
-              </Form.Item>
-              <Form.Item
-                label={
-                  <span>
-                    Name&nbsp;
-                    <Tooltip title="First and Last Name?">
-                      <Icon type="question-circle-o" />
-                    </Tooltip>
-                  </span>
-                }
-              >
-                {getFieldDecorator('name', {
-                  rules: [{ required: false, message: 'Please input your name!', whitespace: true }],
-                })(<Input />)}
-              </Form.Item>
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Item
+            label={
+              <span>
+                Name&nbsp;
+                <Tooltip title="First and Last Name?">
+                  <Icon type="question-circle-o" />
+                </Tooltip>
+              </span>
+            }
+          >
+            {getFieldDecorator('name', {
+              rules: [{ required: false, message: 'Please input your name!', whitespace: true }],
+              initialValue: this.state.name
+            })(<Input />)}
+          </Form.Item>
+          <Form.Item
+            label={
+              <span>
+                How did you find out about OLS&nbsp;
+                <Tooltip title="OLS promoter - refferal ?">
+                  <Icon type="question-circle-o" />
+                </Tooltip>
+              </span>
+            }
+          >
+            {getFieldDecorator('reference', {
+              rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+              initialValue: this.state.reference
+            })(<Input />)}
+          </Form.Item>
+          { this.state.mainAccountType === "uOLSS" &&
+            <div>
               <Form.Item
                 label={
                   <span>
@@ -264,8 +262,9 @@ class Profile extends Component {
                 }
               >
                 {getFieldDecorator('olsexperience', {
-                  rules: [{ required: false, message: 'Please input your experience!', whitespace: true }]
-                  })(
+                  rules: [{ required: false, message: 'Please input your experience!', whitespace: true }],
+                  initialValue: this.state.olsexperience
+                })(
                     <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                       <Radio style={radioStyle} value={"New"}>
                         New 
@@ -283,20 +282,6 @@ class Profile extends Component {
               <Form.Item
                 label={
                   <span>
-                    How did you find out about OLS&nbsp;
-                    <Tooltip title="OLS promoter - refferal ?">
-                      <Icon type="question-circle-o" />
-                    </Tooltip>
-                  </span>
-                }
-              >
-                {getFieldDecorator('reference', {
-                  rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
-                })(<Input />)}
-              </Form.Item>
-              <Form.Item
-                label={
-                  <span>
                     OLS eae | inuo &nbsp;
                     <Tooltip title=" OLS eae (teacher) OLS inuo (instructor) Each has it is own exchange measurement evaluation protocols to determinate proper OLS service fees energy exchange.">
                       <Icon type="question-circle-o" />
@@ -306,6 +291,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('teacher', {
                   rules: [{ required: false, message: 'Please select OLS official!', whitespace: true }],
+                  initialValue: this.state.teacher
                   })(
                     <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                       <Radio style={radioStyle} value={"OLS aste. eae | Nazar Asvitlo  CA USA"}>
@@ -321,26 +307,13 @@ class Profile extends Component {
               <Form.Item
                 label={
                   <span>
-                    Your LOCATION (country, city/town)&nbsp;
-                    <Tooltip title="Determines OLS service value fee* CA$190, Bay Area CA $240 (USA average $160); the rest of countries (Quality of Life GDP value assessment)">
-                      <Icon type="question-circle-o" />
-                    </Tooltip>
-                  </span>
-                }
-              >
-                {getFieldDecorator('location', {
-                  rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
-                })(<Input />)}
-              </Form.Item>
-              <Form.Item
-                label={
-                  <span>
                     Meditation Experience&nbsp;
                   </span>
                 }
               >
                 {getFieldDecorator('meditationexperience', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.meditationexperience
                 })(<Input />)}
               </Form.Item>
               <Form.Item
@@ -352,6 +325,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('health', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.health
                 })(<Input />)}
               </Form.Item>
               <Form.Item
@@ -363,6 +337,7 @@ class Profile extends Component {
               >
                 {getFieldDecorator('start', {
                   rules: [{ required: false, message: 'Please input a value!', whitespace: true, type: 'object' }],
+                  initialValue: moment(this.state.start)
                 })(
                     <DatePicker onChange={this.setDate} />
                   )
@@ -382,54 +357,223 @@ class Profile extends Component {
                   )
                 }
               </Form.Item>
-              <Form.Item label={
+            </div>
+          }
+          { this.state.mainAccountType === "uOLSME" &&
+            <div>
+              <Form.Item
+                label={
                   <span>
-                    Evaluation credits?&nbsp;
+                    Onelightsystem OLS experience&nbsp;
                   </span>
                 }
               >
-                {getFieldDecorator('credits', {
-                  rules: [{ type: "array" }], initialValue: [""]}
-                )(
-                  <Checkbox.Group
-                    onChange={(values) => { console.log(values) }} 
-                  >
-                    <div>
-                      <Checkbox value="10 Google Review">(10)Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
-                        <br />
-                      <Checkbox value="10 Lessons.com">(10)Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
-                        <br />
-                      <Checkbox value="5 Youtube">(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
-                        <br />
-                      <Checkbox value="5 CrunchBase">(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
-                        <br />
-                      <Checkbox value="5 LinkedIn">(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
-                        <br />
-                      <Checkbox value="5 Owler">(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
-                        <br />
-                      <Checkbox value="Udemy">Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
-                        <br />
-                      <Checkbox value="5 Facebook">(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
-                        <br />
-                      <Checkbox value="5 OLS Subscription">(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
-                        <br />
-                      <Checkbox value="Offter something else">I can offer something else</Checkbox>
-                        <br />
-                      <Checkbox value="Pay with crypto">(1) will apply valid crypto currencies to pay for OLS service fees</Checkbox>
-                        <br />
-                      <Checkbox value="Create OLS Video">(10)I will create video on the OLS experience</Checkbox>
-                        <br />
-                      <Checkbox checked={ true } value={ "Other " + this.state.checkboxOther }>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }} onChange={ this.handleCheckboxOther }/>
-                    </div>
-                  </Checkbox.Group>
-                )}
+                {getFieldDecorator('olsexperience', {
+                  rules: [{ required: false, message: "Please input your experience!", whitespace: true }],
+                  initialValue: this.state.olsexperience
+                  })(
+                    <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                      <Radio style={radioStyle} value="New User">
+                        New User
+                      </Radio>
+                      <Radio style={radioStyle} value="PAST Initiated OLS student">
+                        PAST Initiated OLS student
+                      </Radio>
+                    </Radio.Group>
+                  )
+                }
               </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Update Profile
-                </Button>
-              </Form.Item>    
-            </Form>
+              <Form.Item
+                label={
+                  <span>
+                    select OLSME usage account &nbsp;
+                    <Tooltip title=" to evalueta OLSME services fees ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
+              >
+                {getFieldDecorator('accounttype', {
+                  rules: [{ message: "Please input your OLSME Account Type", whitespace: true }],
+                  initialValue: this.state.accounttype
+                  })(
+                    <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                      <Radio style={radioStyle} value="Individual">
+                        Individual 
+                        <Tooltip title=" (30 days free, after fees based on usage and GDP ) ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip> 
+                      </Radio>
+                      <Radio style={radioStyle} value="Corporation">
+                        Corporation 
+                        <Tooltip title=" (Fees based on size and volume) ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip> 
+                      </Radio>
+                      <Radio style={radioStyle} value="Governmental Entity">
+                        Govermental Entity 
+                        <Tooltip title="  (Fees based on state and contry) ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                        {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                      </Radio>
+                    </Radio.Group>
+                  )
+                }
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    How did you find out about OLS&nbsp;
+                    <Tooltip title="OLS promoter - refferal ?">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
+              >
+                {getFieldDecorator('reference', {
+                  rules: [{ message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.reference
+                })(<Input />)}
+              </Form.Item>
+            </div>
+          }
+          {(this.state.mainAccountType === "uOLSS" || this.state.mainAccountType === "uOLSME" || this.state.mainAccountType === "uOLSLM") &&
+            <Form.Item
+              label={
+                <span>
+                  Your LOCATION (country, city/town)&nbsp;
+                  <Tooltip title="Determines OLS service value fee* CA$190, Bay Area CA $240 (USA average $160); the rest of countries (Quality of Life GDP value assessment)">
+                    <Icon type="question-circle-o" />
+                  </Tooltip>
+                </span>
+              }
+            >
+              {getFieldDecorator('location', {
+                rules: [{ message: 'Please input a value!', whitespace: true }],
+                initialValue: this.state.loc
+              })(<Input />)}
+            </Form.Item>
+          }
+          { this.state.mainAccountType === "uOLSLM" &&
+            <Form.Item
+              label={
+                <span>
+                  select OLSLM options &nbsp;
+                  <Tooltip title=" OLSLM LIGHT MINUTES OLS equity ">
+                    <Icon type="question-circle-o" />
+                  </Tooltip>
+                </span>
+              }
+            >
+              {getFieldDecorator('olslmaccounttype', {
+                rules: [{ required: false, whitespace: true }],
+                initialValue: this.state.olslmaccounttype
+                })(
+                  <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                    <Radio style={radioStyle} value="OLSLM Investor">
+                      OLSLM Investor
+                      <Tooltip title=" (90, 180, 360 days Investing benefits) ">
+                    <Icon type="question-circle-o" />
+                  </Tooltip> 
+                    </Radio>
+                    <Radio style={radioStyle} value="OLSLM buyer">
+                      OLSLM buyer 
+                      <Tooltip title=" (min. 1LM category 9 or 10LM category 3) ">
+                    <Icon type="question-circle-o" />
+                  </Tooltip>
+                      {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                    </Radio>
+                  </Radio.Group>
+                )
+              }
+            </Form.Item>
+          }
+          {this.state.mainAccountType === "uOLSP" &&
+            <Form.Item
+              label={
+                <span>
+                  select OLS user  &nbsp;
+                  <Tooltip title=" free account ">
+                    <Icon type="question-circle-o" />
+                  </Tooltip>
+                </span>
+              }
+            >
+              {getFieldDecorator('olspaccounttype', {
+                rules: [{ required: true, message: "Please choose an option!", whitespace: true }],
+                initialValue: this.state.olspaccounttype
+                })(
+                  <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
+                    <Radio style={radioStyle} value="OLS promoter">
+                      OLS promoter 
+                      <Tooltip title=" (promting OLS services for commission) ">
+                    <Icon type="question-circle-o" />
+                  </Tooltip> 
+                    </Radio>
+                    <Radio style={radioStyle} value="using OLS services">
+                       Using OLS services
+                      <Tooltip title=" (ordering OLS official for pulling Light into my Location, ordering OLSM performance in my location) ">
+                    <Icon type="question-circle-o" />
+                  </Tooltip>
+                      {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}
+                    </Radio>
+                  </Radio.Group>
+                )
+              }
+            </Form.Item>
+          }
+          {(this.state.mainAccountType === "uOLSS" || this.state.mainAccountType === "uOLSME" || this.state.mainAccountType === "uOLSP") &&
+            <Form.Item label={
+                <span>
+                  Evaluation credits?&nbsp;
+                </span>
+              }
+            >
+              {getFieldDecorator('credits', {
+                rules: [{ type: "array" }], 
+                initialValue: this.state.credits
+              })(
+                <Checkbox.Group
+                  onChange={(values) => { console.log(values) }} 
+                >
+                  <div>
+                    <Checkbox value="10 Google Review">(10)Had prior OLS experience?! leave a review on <a href="https://goo.gl/7tsW6L">google</a></Checkbox>
+                      <br />
+                    <Checkbox value="10 Lessons.com">(10)Had prior OLS experience?! leave a review on our <a href="https://goo.gl/dhbvmX">lessons</a></Checkbox>
+                      <br />
+                    <Checkbox value="5 Youtube">(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
+                      <br />
+                    <Checkbox value="5 CrunchBase">(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
+                      <br />
+                    <Checkbox value="5 LinkedIn">(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
+                      <br />
+                    <Checkbox value="5 Owler">(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
+                      <br />
+                    <Checkbox value="Udemy">Took our class on <a href="https://www.udemy.com/onelightsystem-olsm/?instructorPreviewMode=guest">Udemy</a></Checkbox>
+                      <br />
+                    <Checkbox value="5 Facebook">(5)Liked and share our <a href="https://www.facebook.com/onelightsystem/">Facebook</a> page</Checkbox>
+                      <br />
+                    <Checkbox value="5 OLS Subscription">(5)Took our OLS subscription <a href="https://docs.google.com/forms/d/e/1FAIpQLSfbLCi3OIfYXxriI1ddYm0ekzfFYpqhpExnheEyNUY2FfnEqw/viewform">survey</a></Checkbox>
+                      <br />
+                    <Checkbox value="Offter something else">I can offer something else</Checkbox>
+                      <br />
+                    <Checkbox value="Pay with crypto">(1) will apply valid crypto currencies to pay for OLS service fees</Checkbox>
+                      <br />
+                    <Checkbox value="Create OLS Video">(10)I will create video on the OLS experience</Checkbox>
+                      <br />
+                    <Checkbox checked={ true } value={ "Other " + this.state.checkboxOther }>Other: </Checkbox><Input style={{ width: 100, marginLeft: 10 }} onChange={ this.handleCheckboxOther }/>
+                  </div>
+                </Checkbox.Group>
+              )}
+            </Form.Item>
+          }
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Update Profile
+            </Button>
+          </Form.Item>    
+        </Form>
       </div>
     );
   }

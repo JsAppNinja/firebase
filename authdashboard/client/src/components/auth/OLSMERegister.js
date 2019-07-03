@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css';
 import { Link } from "react-router-dom"; 
 import { FirebaseContext } from '../Firebase';
+import ConstantsList from '../../constants/ConstantsList';
 import {
   Modal,
   Form,
@@ -50,34 +51,39 @@ class RegistrationForm extends React.Component {
       if (!err) {
         console.log('Received values of form: ', values);
 
-        // Create user account
+        // Add user data to data store
+        var data = {
+          credits: values.credits,
+          loc: values.location,
+          name: values.name,
+          olsexperience: values.olsexperience,
+          accounttype: values.accounttype,
+          reference: values.reference
+        }
 
+        // Create user account
         // Ensure user agreed with ToS
         if(values.agreement1 && values.agreement2) {
           this.firebase.createUser(values.email, values.password)
-          .then(() => {
-             // Send email verification and add user data to database
-             return Promise.all([
-               this.firebase.sendEmailVerification(),
-               this.firebase.createUserFireStore(data)
-             ]);
+          .then((promRes) => {
+            var user = promRes.user;
+            // Send email verification and add user data to database
+            return Promise.all([
+              this.firebase.sendEmailVerification(),
+              this.firebase.createUserFireStore(data, ConstantsList.OLSME_COL, user.uid),
+              this.firebase.addToUserList(user.uid, { type: ConstantsList.OLSME_COL })
+            ]);
            })
           .then(() => {
-            Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+              Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
+              this.props.history.push("/");
+              this.firebase.auth2.signOut();
           })
           .catch(error => {
             Modal.error({ title: "Unable to Create Account", content: error.message });
             console.log(error); 
           });
 
-          // Add user data to data store
-          var data = {
-            credits: values.credits,
-            loc: values.location,
-            name: values.name,
-            olsexperience: values.olsexperience,
-            accounttype: values.accounttype
-          }
         }
       } else {
         console.log('Form validation error');
