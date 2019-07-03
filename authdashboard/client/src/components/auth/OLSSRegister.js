@@ -96,16 +96,10 @@ class RegistrationForm extends React.Component {
               this.firebase.addToUserList(user.uid, { type: ConstantsList.OLSS_COL })
             ]);
           })
-          .then((promRes) => {
-            //var userUid = promRes[2].uid;
-            //console.log(userUid);
-            //console.log(promRes[1].id); // Doc Ref
-            
-            this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
-            .then((doc) => {
-              this.firebase.dbUser = doc.data();
+          .then(() => {
               Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
-            })
+              this.props.history.push("/");
+              this.firebase.auth2.signOut();
           })
           .catch(error => {
             Modal.error({ title: "Issue Creating Account", content: error.message });

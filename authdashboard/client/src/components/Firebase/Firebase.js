@@ -16,6 +16,10 @@ class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
     this.auth = app.auth();
+
+    // Second auth object just for account creations to not trigger event
+    // listener on auth and only allow user to log in is account is verified
+    this.auth2 = app.initializeApp(firebaseConfig, "Secondary").auth();
     this.db = app.firestore();
     this.dbUser = {};
     this.mainAccountType = null;
@@ -23,7 +27,7 @@ class Firebase {
 
   // Auth
   createUser(email, password) {
-    return this.auth.createUserWithEmailAndPassword(email, password);
+    return this.auth2.createUserWithEmailAndPassword(email, password);
   }
   
   signInUser(email, password) {
@@ -43,7 +47,7 @@ class Firebase {
   }
  
   sendEmailVerification() {
-    return this.auth.currentUser.sendEmailVerification();
+    return this.auth2.currentUser.sendEmailVerification();
   }
 
   // Firestore

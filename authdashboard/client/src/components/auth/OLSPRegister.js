@@ -63,6 +63,7 @@ class RegistrationForm extends React.Component {
           this.firebase.createUser(values.email, values.password)
           .then((promRes) => {
              var user = promRes.user;
+
              // Send email verification and add user data to database
              return Promise.all([
                this.firebase.sendEmailVerification(),
@@ -71,11 +72,9 @@ class RegistrationForm extends React.Component {
              ]);
            })
           .then(() => {
-            this.firebase.fetchUserData(this.firebase.auth.currentUser.uid)
-            .then((doc) => {
-              this.firebase.dbUser = doc.data();
               Modal.success({ title: "Account Created!", content: "Your account has been successfully created. Please check your email to verify your account" });
-            })
+              this.props.history.push("/");
+              this.firebase.auth2.signOut();
           })
           .catch(error => {
             Modal.error({ title: "Unable to Create Account", content: error.message });

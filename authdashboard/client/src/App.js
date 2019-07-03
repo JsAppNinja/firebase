@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter, BrowserRouter as Router, Route, Link, Redirect } from "react-router-dom";
-import { Layout } from "antd";
+import { Layout, Modal } from "antd";
 import 'antd/dist/antd.css';
 
 // Custom Components
@@ -34,11 +34,13 @@ export class App extends Component {
     console.log(this.firebase);
     var appThis= this;
     var firebaseThis = this.firebase;
+
     // Set listener for user authentication status
     this.firebase.auth.onAuthStateChanged(function(user) {
-      if(user) {
+      if(user && user.emailVerified) {
         console.log(user);
-        
+
+        // Probably not necessary since data will be fetched per page        
         //firebaseThis.setUserData(user.uid)
         //.then((doc) => {
         //  if(doc.exists) {
@@ -55,10 +57,12 @@ export class App extends Component {
 
         appThis.setState({ authenticated: true });
         appThis.props.history.push("/home/olsupdates");
+        console.log("authed");
+      } else if(user && !user.emailVerified) { 
+        console.log("User needs verification");
       } else {
         appThis.setState({ authenticated: false });
       }
-      console.log("authed");
     })
   }
 
