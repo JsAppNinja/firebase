@@ -530,7 +530,7 @@ class RegistrationForm extends React.Component {
                   <ul>
                   <Checkbox value="3">OLS initi payment    </Checkbox>
                   <br />
-                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/ols-initi">OLS initi</a></Checkbox>
+                  <Checkbox value="4">scheduled <a href="https://www.meetingbird.com/l/OLS/ols-initi">OLS initi</a></Checkbox>
                   <br />
                   </ul>
                   </ul>

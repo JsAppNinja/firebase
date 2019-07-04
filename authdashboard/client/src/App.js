@@ -15,6 +15,7 @@ import Home from './components/dashboard/Home';
 import Privacy from './components/privacy/Privacy';
 import Firebase, { FirebaseContext } from './components/Firebase';
 import ProtectedRoute from './components/navigation/ProtectedRoute';
+import ols from './components/dashboard/OLS';
 
 const { Footer } = Layout;
 
@@ -82,6 +83,7 @@ export class App extends Component {
           <Route path="/passwordreset" component={PasswordReset} />
           <ProtectedRoute path="/home" authenticated={this.state.authenticated} component={Home} />
           <Route path="/privacydisclosure" component={Privacy} />
+          <Route path="/OLS" component={ols} />
         </div>
       </FirebaseContext.Provider>
     );
