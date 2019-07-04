@@ -72,7 +72,7 @@ class BaseLogin extends Component {
           <Card style={{display:"inline-block", textAlign: "initial"}}>
             <Form onSubmit={this.handleSubmit} className="login-form">
               <div style={{"paddingBottom": "10px", "textAlign": "center"}}>
-                <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">794.OLS onelightsystem Meditation® </a> </Title>
+                <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">801.OLS onelightsystem Meditation® </a> </Title>
               </div>
               <Form.Item>
                 {getFieldDecorator('username', {
@@ -86,12 +86,12 @@ class BaseLogin extends Component {
               </Form.Item>
               <Form.Item>
                 {getFieldDecorator('password', {
-                  rules: [{ required: true, message: 'Please input your Password!' }],
+                  rules: [{ required: true, message: 'Please input your Passcode!' }],
                 })(
                   <Input
                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                     type="password"
-                    placeholder="Password"
+                    placeholder="Passcode"
                   />,
                 )}
               </Form.Item>
@@ -101,17 +101,15 @@ class BaseLogin extends Component {
                   initialValue: true,
                 })(<Checkbox>Remember me</Checkbox>)}
                 <a className="login-form-forgot" href="/passwordreset">
-                  Forgot password
+                  Forgot passcode
                 </a>
                 <Button type="primary" htmlType="submit" className="login-form-button">
                   Log in
                 </Button>
-                Or <a href="/register">register [Beta]</a>
+                Or <a href="/register">Apply to register [Beta]</a>
               </Form.Item>
             </Form>
           </Card>
-        
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3cf19ffd-9b04-47f7-af18-5c57fe7ef82b"> </script>
 
         </div>
       </div>

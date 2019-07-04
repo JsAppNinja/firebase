@@ -279,7 +279,7 @@ class RegistrationForm extends React.Component {
               <Form.Item
                 label={
                   <span>
-                    Onelightsystem OLS experience&nbsp;
+                    onelightsystem OLS experience&nbsp;
                   </span>
                 }
               >
@@ -289,9 +289,6 @@ class RegistrationForm extends React.Component {
                     <Radio.Group onChange={this.onChange} value={this.state.radioValue0}>
                       <Radio style={radioStyle} value={"New"}>
                         New 
-                      </Radio>
-                      <Radio style={radioStyle} value={"Received 1 ols introduction before"}>
-                        Received 1 ols introduction before
                       </Radio>
                       <Radio style={radioStyle} value={"PAST Initiated"}>
                         PAST Initiated
@@ -304,7 +301,7 @@ class RegistrationForm extends React.Component {
                 label={
                   <span>
                     How did you find out about OLS&nbsp;
-                    <Tooltip title="OLS promoter - refferal ?">
+                    <Tooltip title="OLS promoter - referral ?">
                       <Icon type="question-circle-o" />
                     </Tooltip>
                   </span>
@@ -318,7 +315,7 @@ class RegistrationForm extends React.Component {
                 label={
                   <span>
                     OLS eae | inuo &nbsp;
-                    <Tooltip title=" OLS eae (teacher) OLS inuo (instructor) Each has it is own exchange measurement evaluation protocols to determinate proper OLS service fees energy exchange.">
+                    <Tooltip title=" Select your OLS official:  OLS eae (teacher) OLS inuo (instructor) Each has it is own exchange measurement evaluation protocols to determinate proper OLS service fees energy exchange. when becoming OLS student can change to different OLS official by requesting new OLS intro&initi ">
                       <Icon type="question-circle-o" />
                     </Tooltip>
                   </span>
@@ -341,7 +338,7 @@ class RegistrationForm extends React.Component {
               <Form.Item
                 label={
                   <span>
-                    Your LOCATION (country, city/town)&nbsp;
+                    Your LOCATION (city/town, state, country)&nbsp;
                     <Tooltip title="Determines OLS service value fee* CA$190, Bay Area CA $240 (USA average $160); the rest of countries (Quality of Life GDP value assessment)">
                       <Icon type="question-circle-o" />
                     </Tooltip>
@@ -356,7 +353,7 @@ class RegistrationForm extends React.Component {
                 label={
                   <span>
                     Your Age&nbsp;
-                    <Tooltip title="Ages 6-12 require a parent">
+                    <Tooltip title="Ages 6-12 required a parent, 13-16 (category II), 17-21 (III), 22-27 (4), 28-32 (5), 33-39 (6), 40-44 (7), 45-49 (8), 50-55 (9), 56-62 (10), 63-69 (11), 70-77(12), 78-85 (13), 86 up (14) " >
                       <Icon type="question-circle-o" />
                     </Tooltip>
                   </span>
@@ -369,8 +366,20 @@ class RegistrationForm extends React.Component {
               <Form.Item
                 label={
                   <span>
+                     Any Health concerns ?&nbsp;
+                  </span>
+                }
+              >
+                {getFieldDecorator('health', {
+                  rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
+                })(<Input />)}
+              </Form.Item>
+
+              <Form.Item
+                label={
+                  <span>
                     Meditation Experience&nbsp;
-                    <Tooltip title=" what you been practices and how long ">
+                    <Tooltip title=" what you been practicing, how long and be more specific ">
                       <Icon type="question-circle-o" />
                     </Tooltip>
                   </span>
@@ -380,21 +389,11 @@ class RegistrationForm extends React.Component {
                   rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
                 })(<Input />)}
               </Form.Item>
+              
               <Form.Item
                 label={
                   <span>
-                    Any Health Issues?&nbsp;
-                  </span>
-                }
-              >
-                {getFieldDecorator('health', {
-                  rules: [{ required: true, message: 'Please input a value!', whitespace: true }],
-                })(<Input />)}
-              </Form.Item>
-              <Form.Item
-                label={
-                  <span>
-                    How soon can you start?&nbsp;
+                    How soon can you be ready for OLS intro 30 min. ?&nbsp;
                   </span>
                 }
               >
@@ -408,7 +407,11 @@ class RegistrationForm extends React.Component {
               <Form.Item
                 label={
                   <span>
-                    What is a convenient time to receive OLS INTRO. / INITI?&nbsp;
+                    What is a convenient time &nbsp;
+                    <Tooltip title="Please provide approximate time you prefer, the exact time scheduling will be After assessment ready , pre-payment 50% than is scheduling for OLS intro" >
+                      <Icon type="question-circle-o" />
+                    </Tooltip>&nbsp;
+
                   </span>
                 }
               >
@@ -422,14 +425,14 @@ class RegistrationForm extends React.Component {
               <Form.Item 
                 label={
                   <span>
-                    Agreement 1&nbsp;
-                    <Tooltip title="The OLS service fees based on assessment current provided Applicant up to date data (valid 9days after to re-evaluate fees will increse 10%) Expect official @mail (intro@ols-med.net) you will receive Assessed OLS servcie Fees to include 50% pre-payment to Scheduling OLS INTRO. ">
+                    Application Validity&nbsp;
+                    <Tooltip title="The OLS service fees based on assessment current provided Applicant up to date data (valid 9days after to re-evaluate fees will increse 10%) Expect official @mail (intro@ols-med.net) you will receive Assessed OLS servcie Fees to include 50% pre-payment to Scheduling OLS INTRO. check your profile page to track your progess ">
                       <Icon type="question-circle-o" />
                     </Tooltip>
                   </span>
                 }
               >
-                {getFieldDecorator('agreement1', {
+                {getFieldDecorator('Application Validity', {
                   valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
                 })(
                   <Checkbox>
@@ -440,15 +443,15 @@ class RegistrationForm extends React.Component {
               <Form.Item 
                 label={
                   <span>
-                    Agreement 2&nbsp;
+                    OLS private privacy disclosure Agreement &nbsp;
                   </span>
                 }
               >
-                {getFieldDecorator('agreement2', {
+                {getFieldDecorator('OLS private privacy disclosure Agreement', {
                   valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
                 })(
                   <Checkbox>
-                    I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">terms of service</a>
+                    I have read and agreed to the <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019/ols-student-statute">OLS student terms of the services </a>
                   </Checkbox>
                 )}
               </Form.Item>
@@ -496,9 +499,53 @@ class RegistrationForm extends React.Component {
               </Form.Item>
               <Form.Item>
                 <Button type="primary" htmlType="submit">
-                  Register Applicant for a free assesment to receive OLS service intro and Initi
+                Apply for OLS student
                 </Button>
-              </Form.Item>    
+              </Form.Item>
+              <Form.Item label={
+                  
+                  <span>
+         Assessment Process (leave this blank for office use only)&nbsp;
+              
+              </span>
+        
+          }
+        >
+          {getFieldDecorator('credits', {
+            rules: [{ type: "array" }], initialValue: [""]}
+          )(
+            <Checkbox.Group
+              onChange={(values) => { console.log(values) }} 
+            >
+              <div>
+                  <br />
+                <Checkbox checked={ true } value={ "OLS service " + this.state.checkboxOther }>OLS service intro&initi Assessment Value ready: </Checkbox><Input style={{ width: 100, marginLeft: 10 }} onChange={ this.handleCheckboxOther }/>
+                <br />
+                <ul>
+                <Checkbox value="OLS">OLS intro 50% payment  </Checkbox>
+                  <br />
+                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/OLS">OLS intro</a></Checkbox>
+                  <br />
+                  <Checkbox value="OLS Intro"> OLS Intro complete </Checkbox>
+                  <ul>
+                  <Checkbox value="3">OLS initi payment    </Checkbox>
+                  <br />
+                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/ols-initi">OLS initi</a></Checkbox>
+                  <br />
+                  </ul>
+                  </ul>
+                  <Checkbox value="OLS stu"> OLS student initiated </Checkbox>
+          {getFieldDecorator('star', {
+            rules: [{ required: true, message: 'Please input a value', whitespace: true, type: 'object' }],
+          })(
+              <DatePicker onChange={this.setDate} />
+            )
+          }
+              </div>
+            </Checkbox.Group>
+          )}
+        </Form.Item>  
+
             </Form>
           </Card>
         </div>
