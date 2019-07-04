@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Card, Form, Icon, Input, Button, Checkbox, Typography } from 'antd';
+import { message, Modal, Card, Form, Icon, Input, Button, Checkbox, Typography } from 'antd';
 import '../../styles/css/login.css';
 import { FirebaseContext } from '../Firebase';
 import { Link, withRouter } from 'react-router-dom';
@@ -25,13 +25,32 @@ class BaseLogin extends Component {
               console.log("Signed in");
             })
           } else {
-            Modal.warning({title: "Account not Verified", content: "To log in first verify your account"});
+            var tmpThis = this;
+            Modal.confirm({
+              title: "Account not Verified", 
+              content: "To log in first verify your account",
+              cancelText: "Resend Verification Email",
+              okText: "Ok",
+              onCancel() {
+                console.log('Cancel');
+                tmpThis.firebase.auth.currentUser.sendEmailVerification().then(() => {
+                  message.success('The email has been resent, please check your email');
 
-            // Needed to redirect to /home otherwise App auth listener will not get retriggered
-            this.firebase.signOutUser();
+                  // Needed to redirect to /home otherwise App auth listener will not get retriggered
+                  tmpThis.firebase.signOutUser();
+                });
+              },
+              onOk() {
+                console.log('OK');
+                tmpThis.firebase.signOutUser();
+              }
+            });
+
           }
         })
         .catch(error => {
+          Modal.error({title: "Error on Login", content: error.message})
+          console.log(error);
           this.setState({ error });
         });
       } else {
