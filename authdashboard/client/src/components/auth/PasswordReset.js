@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FirebaseContext } from '../Firebase';
 import { withRouter } from 'react-router-dom';
 import {
+  Affix,
   Typography,
   Modal,
   Form,
@@ -113,34 +114,39 @@ class BasePasswordReset extends Component {
     ));
 
     return (
-      <div style={{position: "absolute", top: "60%" ,left: "65%", "marginTop": "-350px", "marginLeft": "-650px"}}>
-        <Card style={{ width: 850, marginBottom: 60. }}>
-          <div style={{"textAlign": "center"}}>
-            <Title level={3}>Reset Your Password</Title>
-          </div>
-          <br />
-          <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-            <Form.Item label="E-mail">
-              {getFieldDecorator('email', {
-                rules: [
-                  {
-                    type: 'email',
-                    message: 'The input is not valid E-mail!',
-                  },
-                  {
-                    required: true,
-                    message: 'Please input your E-mail!',
-                  },
-                ],
-              })(<Input />)}
-            </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
-                Reset Password
-              </Button>
-            </Form.Item>    
-          </Form>
-        </Card>
+      <div style={{display: "table", position: "absolute", height: "100%", width: "100%"}}>
+        <Affix offsetTop={0} style={{position: 'absolute', top: 20, left: 20}}>
+          <Button shape="circle" icon="left" onClick={this.backToHomePage} />
+        </Affix>
+        <div style={{marginLeft: "auto", marginRight: "auto", marginTop: "50px", marginBottom: "10px", textAlign: "center"}}>
+          <Card style={{display:"inline-block", textAlign: "initial"}}>
+            <div style={{"textAlign": "center"}}>
+              <Title level={3}>Reset Your Password</Title>
+            </div>
+            <br />
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Item label="E-mail">
+                {getFieldDecorator('email', {
+                  rules: [
+                    {
+                      type: 'email',
+                      message: 'The input is not valid E-mail!',
+                    },
+                    {
+                      required: true,
+                      message: 'Please input your E-mail!',
+                    },
+                  ],
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item style={{textAlign: "center"}}>
+                <Button type="primary" htmlType="submit">
+                  Reset Password
+                </Button>
+              </Form.Item>    
+            </Form>
+          </Card>
+        </div>
       </div>
     );
   }

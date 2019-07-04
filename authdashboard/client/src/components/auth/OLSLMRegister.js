@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { FirebaseContext } from '../Firebase';
 import ConstantsList from '../../constants/ConstantsList';
 import {
+  Affix,
   Modal,
   Form,
   Input,
@@ -90,6 +91,10 @@ class RegistrationForm extends React.Component {
     const value = e.target.value;
     this.setState({ confirmDirty: this.state.confirmDirty || !!value });
   };
+
+  goBack = e => {
+    this.props.history.goBack();;
+  }
 
   setDate = e => {
     console.log("TODO");
@@ -177,6 +182,9 @@ class RegistrationForm extends React.Component {
 
     return (
       <div style={{display: "table", position: "absolute", height: "100%", width: "100%"}}>
+        <Affix offsetTop={0} style={{position: 'absolute', top: 20, left: 20}}>
+          <Button shape="circle" icon="left" onClick={this.goBack} />
+        </Affix>
         <div style={{marginLeft: "auto", marginRight: "auto", marginTop: "50px", marginBottom: "10px", textAlign: "center"}}>
           <Card style={{display:"inline-block", textAlign: "initial"}}>
             <Form onSubmit={this.handleSubmit}>
