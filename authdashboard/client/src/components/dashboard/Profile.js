@@ -269,9 +269,6 @@ class Profile extends Component {
                       <Radio style={radioStyle} value={"New"}>
                         New 
                       </Radio>
-                      <Radio style={radioStyle} value={"Received 1 ols introduction before"}>
-                        Received 1 ols introduction before
-                      </Radio>
                       <Radio style={radioStyle} value={"PAST Initiated"}>
                         PAST Initiated
                       </Radio>
@@ -283,7 +280,7 @@ class Profile extends Component {
                 label={
                   <span>
                     OLS eae | inuo &nbsp;
-                    <Tooltip title=" OLS eae (teacher) OLS inuo (instructor) Each has it is own exchange measurement evaluation protocols to determinate proper OLS service fees energy exchange.">
+                    <Tooltip title=" Select your OLS official:  OLS eae (teacher) OLS inuo (instructor) Each has it is own exchange measurement evaluation protocols to determinate proper OLS service fees energy exchange. when becoming OLS student can change to different OLS official by requesting new OLS intro&initi ">
                       <Icon type="question-circle-o" />
                     </Tooltip>
                   </span>
@@ -307,19 +304,7 @@ class Profile extends Component {
               <Form.Item
                 label={
                   <span>
-                    Meditation Experience&nbsp;
-                  </span>
-                }
-              >
-                {getFieldDecorator('meditationexperience', {
-                  rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
-                  initialValue: this.state.meditationexperience
-                })(<Input />)}
-              </Form.Item>
-              <Form.Item
-                label={
-                  <span>
-                    Any Health Issues?&nbsp;
+                    Any Health concerns?&nbsp;
                   </span>
                 }
               >
@@ -331,7 +316,25 @@ class Profile extends Component {
               <Form.Item
                 label={
                   <span>
-                    How soon can you start?&nbsp;
+                    Meditation Experience&nbsp;
+                    <Tooltip title=" what you been practicing, how long and be more specific ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                }
+              >
+                {getFieldDecorator('meditationexperience', {
+                  rules: [{ required: false, message: 'Please input a value!', whitespace: true }],
+                  initialValue: this.state.meditationexperience
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item
+                label={
+                  <span>
+                    How soon can you be ready for OLS intro 30 min. ?&nbsp;
+                    <Tooltip title="Please Indicate After assessment ready next step is pre-payment 50% than is scheduling for OLS intro" >
+                      <Icon type="question-circle-o" />
+                    </Tooltip>&nbsp;
                   </span>
                 }
               >
@@ -343,10 +346,58 @@ class Profile extends Component {
                   )
                 }
               </Form.Item>
+
+              
+              <Form.Item label={
+                  
+                  <span>
+         Assessment Process (leave this blank for office use only)&nbsp;
+              
+              </span>
+        
+          }
+        >
+          {getFieldDecorator('credits', {
+            rules: [{ type: "array" }], initialValue: [""]}
+          )(
+            <Checkbox.Group
+              onChange={(values) => { console.log(values) }} 
+            >
+              <div>
+                  <br />
+                <Checkbox checked={ true } value={ "OLS service " + this.state.checkboxOther }>OLS service intro&initi Assessment Value ready: </Checkbox><Input style={{ width: 100, marginLeft: 10 }} onChange={ this.handleCheckboxOther }/>
+                <br />
+                <ul>
+                <Checkbox value="OLS">OLS intro 50% payment  </Checkbox>
+                  <br />
+                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/OLS">OLS intro</a></Checkbox>
+                  <br />
+                  <Checkbox value="OLS Intro"> OLS Intro complete </Checkbox>
+                  <ul>
+                  <Checkbox value="3">OLS initi payment    </Checkbox>
+                  <br />
+                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/ols-initi">OLS initi</a></Checkbox>
+                  <br />
+                  </ul>
+                  </ul>
+                  <Checkbox value="OLS stu"> OLS student initiated </Checkbox>
+          {getFieldDecorator('start', {
+            rules: [{ required: true, message: 'Please input a value!', whitespace: true, type: 'object' }],
+          })(
+              <DatePicker onChange={this.setDate} />
+            )
+          }
+              </div>
+            </Checkbox.Group>
+          )}
+        </Form.Item>  
               <Form.Item
                 label={
                   <span>
-                    What is a convenient time to receive OLS INTRO. / INITI?&nbsp;
+                    What is a convenient time &nbsp;
+                    <Tooltip title="Please provide approximate time you prefer, the exact time scheduling will be After assessment ready , pre-payment 50%, than is scheduling for OLS intro" >
+                      <Icon type="question-circle-o" />
+                    </Tooltip>&nbsp;
                   </span>
                 }
               >
@@ -357,6 +408,24 @@ class Profile extends Component {
                   )
                 }
               </Form.Item>
+              <Form.Item 
+                label={
+                  <span>
+                    Application Validity Applied &nbsp;
+                    <Tooltip title="The OLS service fees based on assessment current provided Applicant up to date data (valid 9days after to re-evaluate fees will increse 10%) Expect official @mail (intro@ols-med.net) you will receive Assessed OLS servcie Fees to include 50% pre-payment to Scheduling OLS INTRO. check your profile page to track your progess ">
+                      <Icon type="question-circle-o" />
+                    </Tooltip>
+                  </span>
+                  }
+                  >
+                    {getFieldDecorator('start', {
+                      rules: [{ required: true, message: 'Please input a value!', whitespace: true, type: 'object' }],
+                    })(
+                        <DatePicker onChange={this.setDate} />
+                      )
+                    }
+                  </Form.Item>
+
             </div>
           }
           { this.state.mainAccountType === "uOLSME" &&
@@ -581,3 +650,4 @@ class Profile extends Component {
 
 const WrappedRegistrationForm = Form.create({ name: 'register' })(Profile);
 export default WrappedRegistrationForm;
+

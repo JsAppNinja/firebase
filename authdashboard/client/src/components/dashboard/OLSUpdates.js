@@ -14,6 +14,21 @@ export default class OLSUpdates extends Component {
          <p> <br></br> </p>
          </body>
          <h2>OLS Updates </h2>
+         
+         <p>801.OLSM  </p>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <p>800.OLSLM 16731 LD 13/3/195   </p>
+         <p>799.OLSM  </p>
+         <p>798.OLSM  </p>
+        <p>797.OLSM  </p>
+        <p>796.OLSM  </p>
+         <p>795.OLSM  </p>
+         <p>794.OLSM  </p>
        <p>793.OLS iee.|cto [ols updates establishing for verified users, migration in progress ]</p>
        <p>792.OLSM  </p>
        <ul>
