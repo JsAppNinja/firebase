@@ -15,22 +15,23 @@ export default class OLSUpdates extends Component {
          </body>
          <h2>OLS Updates </h2>
          
-         <p>801.OLSM  </p>
+         <p>802.OLSM__   </p>
+         <p>801.OLS1-9M__13LH , 14LH   </p>
          <body> 
          <p> <br></br> </p>
          </body>
          <body> 
          <p> <br></br> </p>
          </body>
-         <p>800.OLSLM 16731 LD 13/3/195   </p>
+         <p>800.OLS iee.aeo | ceo | [OLSLM 16731, LD 13/3/195, LQ2.2 ]   </p>
          <p>799.OLSM  </p>
          <p>798.OLSM  </p>
-        <p>797.OLSM  </p>
-        <p>796.OLSM  </p>
+         <p>797.OLSM  </p>
+         <p>796.OLSM  </p>
          <p>795.OLSM  </p>
          <p>794.OLSM  </p>
-       <p>793.OLS iee.|cto [ols updates establishing for verified users, migration in progress ]</p>
-       <p>792.OLSM  </p>
+         <p>793.OLS iee.|cto [ols updates establishing for verified users, migration in progress ]</p>
+         <p>792.OLSM  </p>
        <ul>
          <li>OLS iee. aeo|cto  [data policy and disclosure updates] </li>
        </ul>
@@ -72,12 +73,12 @@ export default class OLSUpdates extends Component {
        <p>782. OLS9-9 M___ (176) 2 / 89 </p>
        <p>781. OLSM___14LH</p>
        <p>780. <a href= 'https://youtu.be/scMjTnNitdY'> OLSM___14LH  </a> </p>
-       <p>779. <a href= 'https://youtu.be/4GNdYFCS1aY'> OLSM___2LH </a>, olslm <a href= 'https://youtu.be/jHcYnFuZpTU' >  14.4LH </a> </p>
+       <p>779. <a href= 'https://youtu.be/4GNdYFCS1aY'> OLSM___2LH </a>, <a href= 'https://youtu.be/jHcYnFuZpTU' >  14.4LH </a> </p>
        <p>778.OLSM</p>
        <ul>
          <li>778. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/776 ' > OLS amba | iee.aeo [JUPITER Transition 85/2(171) -- 90/2(176)]</a> </li>
        </ul>
-       <p>777. OLSM__14LH</p>
+       <p>777. <a href= ' https://youtu.be/pRXrwQGMP_s ' >  OLSM__14LH </a> </p>
        <p>776. OLSM__1LH , 14LH </p>
        <p>775. OLSM__ 1LH , 14LH  </p>
        <ul>
