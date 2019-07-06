@@ -346,51 +346,6 @@ class Profile extends Component {
                   )
                 }
               </Form.Item>
-
-              
-              <Form.Item label={
-                  
-                  <span>
-         Assessment Process (leave this blank for office use only)&nbsp;
-              
-              </span>
-        
-          }
-        >
-          {getFieldDecorator('credits', {
-            rules: [{ type: "array" }], initialValue: [""]}
-          )(
-            <Checkbox.Group
-              onChange={(values) => { console.log(values) }} 
-            >
-              <div>
-                  <br />
-                <Checkbox checked={ true } value={ "OLS service " + this.state.checkboxOther }>OLS service intro&initi Assessment Value ready: </Checkbox><Input style={{ width: 100, marginLeft: 10 }} onChange={ this.handleCheckboxOther }/>
-                <br />
-                <ul>
-                <Checkbox value="OLS">OLS intro 50% payment  </Checkbox>
-                  <br />
-                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/OLS">OLS intro</a></Checkbox>
-                  <br />
-                  <Checkbox value="OLS Intro"> OLS Intro complete </Checkbox>
-                  <ul>
-                  <Checkbox value="3">OLS initi payment    </Checkbox>
-                  <br />
-                  <Checkbox value="2">scheduled <a href="https://www.meetingbird.com/l/OLS/ols-initi">OLS initi</a></Checkbox>
-                  <br />
-                  </ul>
-                  </ul>
-                  <Checkbox value="OLS stu"> OLS student initiated </Checkbox>
-          {getFieldDecorator('start', {
-            rules: [{ required: true, message: 'Please input a value!', whitespace: true, type: 'object' }],
-          })(
-              <DatePicker onChange={this.setDate} />
-            )
-          }
-              </div>
-            </Checkbox.Group>
-          )}
-        </Form.Item>  
               <Form.Item
                 label={
                   <span>
