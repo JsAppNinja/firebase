@@ -40,7 +40,7 @@ export default class Home extends Component {
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }}>
             <div style={{ textAlign: "center", alignSelf: "center" }}>
-              <Title level={3}> 802.OLS onelightsystem Meditation®©</Title>
+              <Title level={4}> 803.OLS onelightsystem Meditation®©</Title>
             </div>          
          </Header>
           <Content style={{ margin: '0 16px' }}>
@@ -48,8 +48,11 @@ export default class Home extends Component {
               <Breadcrumb.Item>OLS student</Breadcrumb.Item>
               <Breadcrumb.Item> <a href='https://www.olsme.com/home/olsupdates'>OLS updates</a></Breadcrumb.Item>
               <Breadcrumb.Item>Enter OLSLM OLSM OLSME</Breadcrumb.Item>
-              <Breadcrumb.Item>OLS student Support</Breadcrumb.Item>
-              <Breadcrumb.Item> <a href='https://www.olsme.com/home/ols'> OLS </a> </Breadcrumb.Item>
+              <Breadcrumb.Item> Support</Breadcrumb.Item>
+              
+              <Breadcrumb.Item> <a href='https://www.olsme.com/home/ols'> OLS services </a> </Breadcrumb.Item>
+              <Breadcrumb.Item>OLSME </Breadcrumb.Item>
+              <Breadcrumb.Item>OLSLM</Breadcrumb.Item>
 
             </Breadcrumb>
             <div style={{ padding: 24, background: '#fff', minHeight: "100%" }}>
