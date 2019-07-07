@@ -29,8 +29,8 @@ Project status:
 * Improved mobile UI**
 > * Improved menu item rendering
 > * Improved routing
-> * Improved OLS firebase API (including fixes to fetch user data without breaking auth)
-> * Added profile page that allows users to update their application status.* //!!comment from ols.web.admin //!! when user registering this is their right to see their data what been subbmited on domain and updating it after
+ * Improved OLS firebase API (including fixes to fetch user data without breaking auth) **
+ * Added profile page that allows users to update their application status.**
 
 
 797ols.cto.web.admin indicated it  authentication [error] the user can login to the dashboard without verifyied email [spam risk]
@@ -41,22 +41,22 @@ Project status:
 801. ols.web.admin pulled origin master and began testing on local server 
 
 
-* Added the ability for users to resend their verification emails if needed 
-  * Will need to try to log in and click that option through the dialog box
-  * Can not make box asking for gmail due to firebase needed a user object
+* Added the ability for users to resend their verification emails if needed  **
+ > * Will need to try to log in and click that option through the dialog box
+  > * Can not make box asking for gmail due to firebase needed a user object
     authenticated to start an email verification request
 
-* Fixed merge conflicts between checkpoint2.5 branch and master 
- * Now OLS updates are visible on the dashboard (it supposed to be visible always, ols.web.admin pushed the 794 to the master)
+> * Fixed merge conflicts between checkpoint2.5 branch and master  --
+ > * Now OLS updates are visible on the dashboard -- (it supposed to be visible always, ols.web.admin pushed the 794 to the master)
 
-* Improved UI for registration and password reset pages (testing)
+> * Improved UI for registration and password reset pages (testing)
   * Now there is a floating button where users can go back **
 
-* Added error messages on failed login attempts (testing)
-  * Will appear as a dialog modal
+* Added error messages on failed login attempts **
+  * Will appear as a dialog modal **
   
  
- 801. ols.web.admin pulled origin master and began testing on local server , adding fields on the register page met the chalange to deploy the simple correction.
+ 801. ols.web.admin pulled origin master and began testing on local server 
 
 
 
