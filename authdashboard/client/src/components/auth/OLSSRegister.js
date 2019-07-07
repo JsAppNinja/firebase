@@ -89,7 +89,7 @@ class RegistrationForm extends React.Component {
  
         // Create user account
         // Ensure user agreed with ToS
-        if(values.Agreement1 && values.agreement2) {
+        if(values.agreement1 && values.agreement2) {
           this.firebase.createUser(values.email, values.password)
           .then((promRes) => {
             console.log(promRes.user.uid);
@@ -432,7 +432,7 @@ class RegistrationForm extends React.Component {
                   </span>
                 }
               >
-                {getFieldDecorator('Agreement1', {
+                {getFieldDecorator('agreement1', {
                   valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
                 })(
                   <Checkbox>
@@ -447,7 +447,7 @@ class RegistrationForm extends React.Component {
                   </span>
                 }
               >
-                {getFieldDecorator('Agreement2', {
+                {getFieldDecorator('agreement2', {
                   valuePropName: 'checked', rules: [{ required: true, message: 'Please check the box'}]
                 })(
                   <Checkbox>
@@ -502,6 +502,7 @@ class RegistrationForm extends React.Component {
                 Apply for OLS student
                 </Button>
               </Form.Item>
+              
             </Form>
           </Card>
         </div>
