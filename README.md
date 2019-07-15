@@ -60,7 +60,7 @@ Project status:
 
 804.OLS.Project-Login-Authentication-users-dashboard - file transforming, from ols.804 permision to pull, merge and deploy availible only by olsme.web.admin@ols-med.net
  
-811.ols.cto changed repository name to 757-804.OLS.iee.web.plat.olsme
+811.ols|iee | olsme.cto change the repository name to 757-804.OLS.iee.web.plat.olsme
 </div>
  
 
