@@ -57,7 +57,10 @@ Project status:
  
  801. ols.web.admin pulled origin master [final chp2.5] and began testing on local server 
 <div>
- 804.OLS.Project-Login-Authentication-users-dashboard - file transforming, from ols.804 permision to pull, merge and deploy availible only by ols.we.admin
+
+804.OLS.Project-Login-Authentication-users-dashboard - file transforming, from ols.804 permision to pull, merge and deploy availible only by olsme.web.admin@ols-med.net
+ 
+811.ols.cto changed repository name to 757-804.OLS.iee.web.plat.olsme
 </div>
  
 
