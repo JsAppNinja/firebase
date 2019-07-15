@@ -23,7 +23,6 @@ Project status:
 794.ols.web.admin updating the domain 
 
 
-
 797. chp2.5 branch merged and deployed by JD with 787.ols.updates version
 
 * Improved mobile UI**
@@ -42,9 +41,9 @@ Project status:
 
 
 * Added the ability for users to resend their verification emails if needed  **
- > * Will need to try to log in and click that option through the dialog box
-  > * Can not make box asking for gmail due to firebase needed a user object
-    authenticated to start an email verification request
+* Will need to try to log in and click that option through the dialog box **
+* Can not make box asking for gmail due to firebase needed a user object
+    authenticated to start an email verification request **
 
 > * Fixed merge conflicts between checkpoint2.5 branch and master  --
  > * Now OLS updates are visible on the dashboard -- (it supposed to be visible always, ols.web.admin pushed the 794 to the master)
@@ -56,7 +55,12 @@ Project status:
   * Will appear as a dialog modal **
   
  
- 801. ols.web.admin pulled origin master and began testing on local server 
+ 801. ols.web.admin pulled origin master [final chp2.5] and began testing on local server 
+<div>
+ 804.OLS.Project-Login-Authentication-users-dashboard - file transforming, from ols.804 permision to pull, merge and deploy availible only by ols.we.admin
+</div>
+ 
+
 
 
 
