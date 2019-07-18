@@ -254,7 +254,7 @@ class RegistrationForm extends React.Component {
                   rules: [
                     {
                       required: true,
-                      message: 'Please confirm your password!',
+                      message: 'Please confirm your passcode!',
                     },
                     {
                       validator: this.compareToFirstPassword,

@@ -61,7 +61,7 @@ export default class Register extends Component {
             </Link>
             <Link to="/">
               <Button size="large">Back</Button>
-            </Link>
+              </Link>
           </div>
         </Card>
       </div>
