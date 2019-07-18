@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Manual extends Component {
+export default class OLS extends Component {
   render() {
     return (
             
@@ -12,6 +12,7 @@ export default class Manual extends Component {
             <p> onelightsystem OLS LLC , founded 04.2017 in CA USA </p>
             <p> onelightsystem OLS developed OLSM , OLSLM , OLSME </p>
             <p> onelightsystem OLS opened department OLS iee.aeo (iense & aunselo) </p>
+            <p>  OLS iee&aeo founded olsme </p>
             </div>
     );
   }

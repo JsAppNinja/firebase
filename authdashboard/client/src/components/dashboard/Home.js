@@ -40,7 +40,7 @@ export default class Home extends Component {
         <Layout>
           <Header style={{ background: '#fff', padding: 0 }}>
             <div style={{ textAlign: "center", alignSelf: "center" }}>
-              <Title level={4}> 804.OLS onelightsystem Meditation®©</Title>
+              <Title level={4}> 815.OLS onelightsystem Meditation®©</Title>
             </div>          
          </Header>
           <Content style={{ margin: '0 16px' }}>
