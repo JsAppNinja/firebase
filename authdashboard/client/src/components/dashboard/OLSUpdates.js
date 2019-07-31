@@ -5,17 +5,58 @@ export default class OLSUpdates extends Component {
   render() {
     return (
           <div>
-        <head>
-<script id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=3cf19ffd-9b04-47f7-af18-5c57fe7ef82b"> </script>
-      </head>
+       
        <h1>OLS iee.aeo </h1>
-       <p>818. <a href= 'https://youtu.be/CI-JzVFV1AY'> OLS amba |  iee.aeo   [Mercury eclipse   30/3/212  --- 32/3/214] </a> </p>
-         <p>811. <a href= 'https://www.ols-med.net/olsm/ols-updates/729/776/811'> OLS amba |  iee.aeo   [SATURN Transition   16/3/198  --- 23/3/205] </a> </p>
+       <p>884. <a href= 'https://youtu.be/Qs7DFe1Z3a8'>OLS amba |  iee.aeo. | aste eae  Equinox Live updates 1/4/278 (2.3LQ) </a> </p>
+         <p>865. <a href= 'https://youtu.be/yzC1UapOFN4'> OLS amba | iee.aeo NEPTUNE Transition 76/3/258 --- 83/3/266   </a> </p>
          <body> 
          <p> <br></br> </p>
          </body>
          <h2>OLS Updates </h2>
          
+         <p>828.OLSM__   </p>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <p>827.OLSM__   </p>
+         <p>826.OLSM__   </p>
+         <p>825.OLSM__   </p>
+         <p>824.OLSM__   </p>
+         <p>823.OLSM__   </p>
+         <p>822.OLSM__   </p>
+         <p>821.OLSM__   </p>
+         <p>820.OLSM__   </p>
+         <p>819.OLSM__   </p>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <p>818.  OLS amba |  iee.aeo   [Mercury eclipse   30/3/212  --- 32/3/214] </p>
+         <p>817.OLSM__   </p>
+         <p>816.OLSM__   </p>
+         <p>815.OLSM__   </p>
+         <p>814.OLSM__   </p>
+         <p>813.OLSM__   </p>
+         <p>812.OLSM__   </p>
+         <p>811. OLS amba |  iee.aeo   [SATURN Transition   16/3/198  --- 23/3/205]  </p>
+         <p>810.OLSM__   </p>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <body> 
+         <p> <br></br> </p>
+         </body>
+         <p>809.OLSM__   </p>
+         <p>808.OLSM__   </p>
+         <p>807.OLSM__   </p>
+         <p>806.OLSM__   </p>
+         <p>805.OLSM__   </p>
+         <p>804.OLSM__   </p>
          <p>803.OLSM__   </p>
          <p>802.OLSM__   </p>
          <ul>
