@@ -597,6 +597,7 @@ class Profile extends Component {
             <Button type="primary" htmlType="submit">
               Update Profile
             </Button>
+            <p><a href= 'intro@ols-med.net'>Submit Request for Removal </a> </p>
           </Form.Item>  
             
         </Form>
