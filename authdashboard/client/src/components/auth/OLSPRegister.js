@@ -341,6 +341,8 @@ class RegistrationForm extends React.Component {
                         <br />
                       <Checkbox value="5 Youtube">(5)Subscribed on <a href="https://www.youtube.com/c/ONELIGHTSYSTEMOLSMeditation"> Youtube</a></Checkbox>
                         <br />
+                      <Checkbox value="5 Instagram">(5)Followed us on <a href="https://www.instagram.com/onelightsystem_ols/">Instagram</a></Checkbox>
+                        <br />
                       <Checkbox value="5 CrunchBase">(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
                         <br />
                       <Checkbox value="5 LinkedIn">(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>

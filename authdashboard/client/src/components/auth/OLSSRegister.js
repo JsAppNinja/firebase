@@ -219,7 +219,7 @@ class RegistrationForm extends React.Component {
           <Card style={{display:"inline-block", textAlign: "initial"}}>
             <Form onSubmit={this.handleSubmit}>
               <div style={{"textAlign": "center"}}>
-                <Title level={3}>OLS Student Registration</Title>
+                <Title level={3}>OLS Student Assessment Application</Title>
               </div>
               <br />
               <Form.Item label="E-mail">
