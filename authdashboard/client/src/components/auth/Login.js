@@ -75,12 +75,12 @@ class BaseLogin extends Component {
                 <Title level={3}> <a href="https://www.ols-med.net/ols-private-privacy-disclosure-updates-06-2019">840.OLS onelightsystem meditation®© </a> </Title>
               </div>
               <Form.Item>
-                {getFieldDecorator('@mail', {
+                {getFieldDecorator('username', {
                   rules: [{ required: true, message: 'Please input your @mail!' }],
                 })(
                   <Input
                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                    placeholder="@mail"
+                    placeholder="username"
                   />,
                 )}
               </Form.Item>
