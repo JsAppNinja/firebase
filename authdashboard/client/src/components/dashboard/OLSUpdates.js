@@ -124,12 +124,12 @@ export default class OLSUpdates extends Component {
        <p>790.OLSM </p>
        <p>789.OLSM  </p>
        <ul>
-         <li>789.OLS <a href= 'https://www.ols-med.net/olsm/ols-updates/729/776/789'> amba |  iee.aeo. | aste eae [Solstice Live updates 1/3/181 (2.2LQ) -- 06/22] </a> </li>
+         <li>789.OLS <a href= 'https://www.ols-med.net/olsm/ols-updates/789'> amba |  iee.aeo. | aste eae [Solstice Live updates 1/3/181 (2.2LQ) -- 06/22] </a> </li>
        </ul>
        <p>788.OLS__M__(180) 2 / 95]</p>
        <p>787.OLSM </p>
        <ul>
-         <li>787.OLS <a href= 'https://www.ols-med.net/olsm/ols-updates/729/730/787'> iense aunselo [OLS Lightblockchain OLSLM, OLSM, OLSME] </a> </li>
+         <li>787.OLS <a href= 'https://www.ols-med.net/olsm/ols-updates/787'> iense aunselo [OLS Lightblockchain OLSLM, OLSM, OLSME] </a> </li>
        </ul>
        <p>786. OLS__M__</p>
        <p>785. OLS__M__</p>
@@ -160,7 +160,7 @@ export default class OLSUpdates extends Component {
        <p>776. OLSM__1LH , 14LH </p>
        <p>775. OLSM__ 1LH , 14LH  </p>
        <ul>
-         <li>775. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/776/775 ' >OLS iee. [debunking eng.lish "sunglasses myth" 06/08 vs (169) 2/82] </a> </li>
+         <li>775. <a href= ' https://www.ols-med.net/olsm/ols-updates/775 ' >OLS iee. [debunking eng.lish "sunglasses myth" 06/08 vs (169) 2/82] </a> </li>
        </ul>
        <p>774. OLS1-9 M___. 2LH , 14LH   (168) 2 / 81</p>
        <body> 
@@ -175,7 +175,7 @@ export default class OLSUpdates extends Component {
          <p>773. OLSM__9-9_2LH. , 14LH (167)2 / 80</p>
          <p>772. OLSM___2LH , 14LH  </p>
          <ul>
-         <li>772. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/776/771-ols-amba  ' > OLS amba | iee.aeo [public recommendations to the National Security Implications of Climate Change Open Hearing] </a> </li>
+         <li>772. <a href= ' https://www.ols-med.net/olsm/ols-updates/772-ols-amba ' > OLS amba | iee.aeo [public recommendations to the National Security Implications of Climate Change Open Hearing] </a> </li>
        </ul>
          <p>771. OLSM___3LH , 14LH</p>
          <p>770. OLSM___14LH</p>
@@ -194,7 +194,7 @@ export default class OLSUpdates extends Component {
          <p> <br></br> </p>
          </body>
          <p>764. OLS LM 4LH , OLSM 9-9_14LH 158/2-72</p>
-         <p>763. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/730/763 ' > OLS iee. | aste eae nazara.svitlo (LM) log. 110 LightDays  600-710  </a>  </p>
+         <p>763. <a href= ' https://www.ols-med.net/olsm/ols-updates/763 ' > OLS iee. | aste eae nazara.svitlo (LM) log. 110 LightDays  600-710  </a>  </p>
          <p>762. OLS LM 1LH. , 14LH , 14.3LH</p>
          <p>761. OLSM___14LH</p>
          <p>760. OLSM___2LH , OLS LM 14LH</p>
@@ -202,7 +202,7 @@ export default class OLSUpdates extends Component {
          <p>758. OLSM__3LH , 14LH</p>
          <p>757. OLSM__13LH , 14LH</p>
          <ul>
-         <li>757. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/747/757-ols-lm-updates' > OLS founder |  CEO  | OLS iee.aeo [OLSLM] (151)2/65 </a> </li>
+         <li>757. <a href= ' https://www.ols-med.net/olsm/ols-updates/757' > OLS founder |  CEO  | OLS iee.aeo [OLSLM] (151)2/65 </a> </li>
        </ul>
          <p>756. OLSM.1-9.13LH (150)2 / 64</p>
              <body> 
@@ -219,7 +219,7 @@ export default class OLSUpdates extends Component {
          <p>753. OLSM___13LH</p>
          <p>752. OLSM</p>
          <p>751. OLSM</p>
-         <p>750. <a href= ' https://www.ols-med.net/olsm/ols-updates/729/730/750 ' >  OLS eae OLSM 600 - 700 </a> </p>
+         <p>750. <a href= ' https://www.ols-med.net/olsm/ols-updates/750 ' >  OLS eae OLSM 600 - 700 (new OLS inuo protocol to enter OLSLM lunched) </a> </p>
          <p>749.OLSM13LH.</p>
          <p>748.OLS LM.14LH</p>
              <body> 
@@ -241,7 +241,7 @@ export default class OLSUpdates extends Component {
          <p>742.OLS LM 2LH </p>
           <p>741.OLSM___1LH,  13 LH </p>
           <ul>
-         <li>741.135/2-49  <a href= ' http://www.ols-med.net/olsm/ols-updates/729/741-1352-49 ' >
+         <li>741.135/2-49  <a href= ' http://www.ols-med.net/olsm/ols-updates/741 ' >
   OLS founder | aste. eae. (master teacher) Nazar Asvitlo
 OLS inuo Rei-Wen Ho officially available instructions also in mandarin 太 陽 光 凝 視 系 統  </a></li>
        </ul>
@@ -392,7 +392,7 @@ OLS inuo Rei-Wen Ho officially available instructions also in mandarin 太 陽 �
          <p> <br></br> </p>
          </body>
                <p>665.59 OLSM___9–9] 1LH</p>
-<p>660.54 <a href= 'https://www.ols-med.net/olsm/ols-updates/507/500/660 ' >  OLS iee.aeo.eae [CORRECT TIME up-dates 54/1/1] </a></p>
+<p>660.54 <a href= 'https://www.ols-med.net/olsm/ols-updates/660 ' >  OLS iee.aeo.eae [CORRECT TIME up-dates 54/1/1] </a></p>
 <p>657.51 OLSM___1–9] 1,2,8 & 9 LH</p>
 <body> 
              <p> <br></br> </p>
@@ -435,7 +435,7 @@ OLS inuo Rei-Wen Ho officially available instructions also in mandarin 太 陽 �
          </body>
                <p>637.OLSM___ 8--9] 2LH & 9LH (1/20)</p>
 <p>636.OLSM___ 7--9] 3LH  (1/19) </p>
-<p>635. <a href= ' https://www.ols-med.net/olsm/ols-updates/604/620/635 ' > OLS eae (teacher) nazara.svitlo 110LightDays (LM)log. 490-600 </a></p>
+<p>635. <a href= ' https://www.ols-med.net/olsm/ols-updates/635 ' > OLS eae (teacher) nazara.svitlo 110LightDays (LM)log. 490-600 </a></p>
 <p>634.OLSM___ 5--9] 3LH  (1/18) </p>
 <p>633. OLS eae experiences witnessing `starships` visitation </p>
 <body> 
@@ -500,7 +500,7 @@ OLS inuo Rei-Wen Ho officially available instructions also in mandarin 太 陽 �
          <p> <br></br> </p>
          </body>
                <p>587. OLS Meditation class now Live on udemy </p>
-<p>586. <a href= '  www.ols-med.net/olsm/ols-updates/580/586 ' >  OLS iense drafting 2019-2022 roadmap </a> </p>
+<p>586. <a href= '  www.ols-med.net/olsm/ols-updates/586 ' >  OLS iense drafting 2019-2022 roadmap </a> </p>
 
 <body> 
              <p> <br></br> </p>
