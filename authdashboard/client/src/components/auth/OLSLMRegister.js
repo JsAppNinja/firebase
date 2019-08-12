@@ -282,7 +282,7 @@ class RegistrationForm extends React.Component {
                       </Radio>
                       <Radio style={radioStyle} value="OLSLM buyer">
                         OLSLM buyer 
-                        <Tooltip title=" (min. 1LM category 9 or 10LM category 3) ">
+                        <Tooltip title=" (availible now min. 1LM category 9 or 10LM category 3) ">
                       <Icon type="question-circle-o" />
                     </Tooltip>
                         {this.state.radioValue0 === 6 ? <Input style={{ width: 100, marginLeft: 10 }} /> : null}

@@ -44,7 +44,7 @@ export default class Register extends Component {
                 OLS Student (Intro and Initi assesment application)
               </Radio>
               <Radio style={radioStyle} value={1}>
-                OLSME user (Public 30 days free, corporates or government fees)
+                OLSME user (Public or corporates and government training)
               </Radio>
               <Radio style={radioStyle} value={2}>
                 OLSLM (Investor or buyer)

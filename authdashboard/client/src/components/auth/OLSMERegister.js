@@ -403,6 +403,8 @@ class RegistrationForm extends React.Component {
                         <br />
                       <Checkbox value="5 CrunchBase">(5)Followed us on <a href="https://www.crunchbase.com/organization/onelightsystem-ols">CrunchBase</a></Checkbox>
                         <br />
+                      <Checkbox value="5 Instagram">(5)Followed us on <a href="https://www.instagram.com/onelightsystem_ols/">Instagram</a></Checkbox>
+                        <br />
                       <Checkbox value="5 LinkedIn">(5)Followed us on <a href="https://www.linkedin.com/company/one-light-system/">LinkedIn</a></Checkbox>
                         <br />
                       <Checkbox value="5 Owler">(5)Followed us on <a href="https://www.owler.com/company/ols-med">Owler and Weight</a></Checkbox>
